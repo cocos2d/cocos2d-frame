@@ -46,7 +46,6 @@ public class CocosPlayerPresence extends Service {
 	}
 
 	public static void setPortAndPairing(int p, int pairingCode) {
-		running = true;
 		setPairing(pairingCode);
 		port = p;
 	}
@@ -66,7 +65,7 @@ public class CocosPlayerPresence extends Service {
 
 	public static int startPresence() {
 
-		if (port < 0 || !running)
+		if (port < 0 || running)
 			return -1;
 
 		Log.i(TAG, "Starting NSD Service");
