@@ -347,7 +347,6 @@ NSString *kCCBPlayerStatusStringScript = @"Action: Executing script";
 
 -(void) runJSApp
 {
-    [self stopMain];
     handle_ccb_run();
 	playerWindowDisplayed = NO;	
 }
