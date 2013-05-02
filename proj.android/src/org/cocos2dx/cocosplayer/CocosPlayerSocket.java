@@ -60,7 +60,7 @@ public class CocosPlayerSocket {
 		});
 	}
 
-	private void setStatusMessage(final String msg) {
+	private static void setStatusMessage(final String msg) {
 		Cocos2dxGLSurfaceView.getInstance().queueEvent(new Runnable() {
 			@Override
 			public void run() {
@@ -69,7 +69,7 @@ public class CocosPlayerSocket {
 		});
 	}
 
-	private void setConnectionMessage(final String msg) {
+	private static void setConnectionMessage(final String msg) {
 		Cocos2dxGLSurfaceView.getInstance().queueEvent(new Runnable() {
 			@Override
 			public void run() {
@@ -313,6 +313,10 @@ public class CocosPlayerSocket {
 			}
 			mPairingCode = code;
 
+			setConnectionMessage(kCCBNetworkStatusStringNotConnected);
+			setStatusMessage(kCCBPlayerStatusStringNotConnected);
+
+			CocosPlayerPresence.destroy();
 			CocosPlayerPresence.setContext(cw);
 			CocosPlayerPresence.setPortAndPairing(server.getLocalPort(),
 					mPairingCode);
