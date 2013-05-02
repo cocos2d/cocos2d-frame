@@ -11,6 +11,18 @@
 
 #include "CCApplication.h"
 #include "jsapi.h"
+#include "Cocos2dPlayerCommon.h"
+#include "generated/jsb_cocos2dx_auto.hpp"
+#include "generated/jsb_cocos2dx_extension_auto.hpp"
+#include "jsb_cocos2dx_extension_manual.h"
+#include "cocos2d_specifics.hpp"
+#include "js_bindings_chipmunk_registration.h"
+#include "js_bindings_ccbreader.h"
+#include "js_bindings_system_registration.h"
+#include "jsb_opengl_registration.h"
+#include "platform/CCDevice.h"
+#include "StreamMessagingHelper.h"
+
 
 /**
  @brief    The cocos2d Application.
@@ -46,19 +58,10 @@ public:
      */
     virtual void applicationWillEnterForeground();
     void initGameView();
+    static void setIsPortrait(bool isPortrait);
    
 };
 
-bool runMainScene();
-bool handle_eval_script(const char *script, jsval *out);
-void openEditBox();
-void updatePairingLabel(const char *);
-void handle_ccb_stop();
-void handle_connected();
-void handle_disconnected();
-void handle_set_orient(float w, float h);
-void handle_set_message(const char *msg);
-void handle_set_status(const char *msg);
 
 #endif // _APP_DELEGATE_H_
 

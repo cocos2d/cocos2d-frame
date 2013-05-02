@@ -10,7 +10,11 @@ LOCAL_SRC_FILES := cocosplayer/main.cpp \
                    ../../Classes/PlayerStatus.cpp\
                    ../../Classes/AppDelegate.cpp \
                    ../../Classes/MainSceneHelper.cpp \
-	 	   ../../Classes/Java_org_cocos2dx_cocosplayer_CocosPlayerSocket.cpp
+	 	   ../../Classes/Java_org_cocos2dx_cocosplayer_CocosPlayerSocket.cpp \
+	 	   ../../Classes/Cocos2dPlayerCommon.cpp \
+	 	   ../../Classes/StreamMessagingHelper.cpp \
+
+
 
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes

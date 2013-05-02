@@ -1,12 +1,5 @@
-
 #include "PlayerStatus.h"
 #include "PlayerStatusLoader.h"
-#include "MainSceneHelper.h"
-#include "AppDelegate.h"
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-#include "GUI/CCEditBox/CCEditBox.h"
-#include "jni/Java_org_cocos2dx_lib_Cocos2dxHelper.h"
-#endif
 
 USING_NS_CC;
 USING_NS_CC_EXT;

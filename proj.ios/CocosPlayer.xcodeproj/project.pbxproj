@@ -178,6 +178,9 @@
 		265C9014172F4B71001841CE /* Slot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 265C8FFD172F4B71001841CE /* Slot.cpp */; };
 		265C9015172F4B71001841CE /* SlotData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 265C8FFF172F4B71001841CE /* SlotData.cpp */; };
 		265C9016172F4B71001841CE /* spine-cocos2dx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 265C9001172F4B71001841CE /* spine-cocos2dx.cpp */; };
+		265C901C17307B56001841CE /* Cocos2dPlayerCommon.mm in Sources */ = {isa = PBXBuildFile; fileRef = 265C901B17307B56001841CE /* Cocos2dPlayerCommon.mm */; };
+		265C901E1731916F001841CE /* Cocos2dPlayerCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 265C901D1731916E001841CE /* Cocos2dPlayerCommon.cpp */; };
+		267096721732EB4000B4E340 /* StreamMessagingHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 267096701732EB4000B4E340 /* StreamMessagingHelper.cpp */; };
 		26743CD6170B852000D4BB29 /* MainSceneHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26743CD2170B852000D4BB29 /* MainSceneHelper.cpp */; };
 		26743CD8170B853600D4BB29 /* PlayerStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26743CD7170B853600D4BB29 /* PlayerStatus.cpp */; };
 		A92275421517C094001B78AA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275411517C094001B78AA /* QuartzCore.framework */; };
@@ -540,6 +543,11 @@
 		265C9001172F4B71001841CE /* spine-cocos2dx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "spine-cocos2dx.cpp"; sourceTree = "<group>"; };
 		265C9002172F4B71001841CE /* spine-cocos2dx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "spine-cocos2dx.h"; sourceTree = "<group>"; };
 		265C9003172F4B71001841CE /* spine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spine.h; sourceTree = "<group>"; };
+		265C9019173078B8001841CE /* Cocos2dPlayerCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cocos2dPlayerCommon.h; sourceTree = "<group>"; };
+		265C901B17307B56001841CE /* Cocos2dPlayerCommon.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Cocos2dPlayerCommon.mm; sourceTree = "<group>"; };
+		265C901D1731916E001841CE /* Cocos2dPlayerCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cocos2dPlayerCommon.cpp; sourceTree = "<group>"; };
+		267096701732EB4000B4E340 /* StreamMessagingHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StreamMessagingHelper.cpp; sourceTree = "<group>"; };
+		267096711732EB4000B4E340 /* StreamMessagingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamMessagingHelper.h; sourceTree = "<group>"; };
 		26743CD2170B852000D4BB29 /* MainSceneHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainSceneHelper.cpp; sourceTree = "<group>"; };
 		26743CD3170B852000D4BB29 /* MainSceneHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSceneHelper.h; sourceTree = "<group>"; };
 		26743CD4170B852000D4BB29 /* PlayerStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerStatus.h; sourceTree = "<group>"; };
@@ -1037,6 +1045,7 @@
 				26552C55171F6E2900F41C8C /* ssziparchive */,
 				26552C52171F6E0900F41C8C /* ServerController.h */,
 				26552C53171F6E0900F41C8C /* ServerController.mm */,
+				265C901B17307B56001841CE /* Cocos2dPlayerCommon.mm */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -1225,6 +1234,10 @@
 				26743CD5170B852000D4BB29 /* PlayerStatusLoader.h */,
 				D4545215156E28EF00887EB5 /* AppDelegate.cpp */,
 				D4545216156E28EF00887EB5 /* AppDelegate.h */,
+				265C9019173078B8001841CE /* Cocos2dPlayerCommon.h */,
+				265C901D1731916E001841CE /* Cocos2dPlayerCommon.cpp */,
+				267096701732EB4000B4E340 /* StreamMessagingHelper.cpp */,
+				267096711732EB4000B4E340 /* StreamMessagingHelper.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1485,6 +1498,9 @@
 				265C9014172F4B71001841CE /* Slot.cpp in Sources */,
 				265C9015172F4B71001841CE /* SlotData.cpp in Sources */,
 				265C9016172F4B71001841CE /* spine-cocos2dx.cpp in Sources */,
+				265C901C17307B56001841CE /* Cocos2dPlayerCommon.mm in Sources */,
+				265C901E1731916F001841CE /* Cocos2dPlayerCommon.cpp in Sources */,
+				267096721732EB4000B4E340 /* StreamMessagingHelper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

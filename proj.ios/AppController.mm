@@ -3,12 +3,16 @@
 #import "AppController.h"
 #import "cocos2d.h"
 #import "EAGLView.h"
-#import "AppDelegate.h"
-
+#import "Cocos2dPlayerCommon.h"
 #import "RootViewController.h"
+#include "AppDelegate.h"
 
 ServerController *server;
 
+/*
+ * Cocos2dPlayerCommon definitions
+ *
+ */
 
 extern "C" {
 

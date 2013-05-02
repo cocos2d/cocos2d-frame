@@ -4,7 +4,7 @@
 #include <string>
 #include "platform/android/jni/JniHelper.h"
 #include "cocoa/CCString.h"
-#include "Java_org_cocos2dx_cocosplayer_CocosPlayerSocket.h"
+#include "Cocos2dPlayerCommon.h"
 #include "jsapi.h"
 
 #define  LOG_TAG    "Java_org_cocos2dx_cocosplayer_CocosPlayerSocket.cpp"
