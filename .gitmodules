@@ -1,3 +1,6 @@
 [submodule "libs/cocos2d-x"]
 	path = libs/cocos2d-x
 	url = git://github.com/cocos2d/cocos2d-x.git
+[submodule "libs/parson"]
+	path = libs/parson
+	url = git://github.com/kgabis/parson.git
