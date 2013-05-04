@@ -182,6 +182,7 @@
 		267096721732EB4000B4E340 /* StreamMessagingHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 267096701732EB4000B4E340 /* StreamMessagingHelper.cpp */; };
 		26743CD6170B852000D4BB29 /* MainSceneHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26743CD2170B852000D4BB29 /* MainSceneHelper.cpp */; };
 		26743CD8170B853600D4BB29 /* PlayerStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26743CD7170B853600D4BB29 /* PlayerStatus.cpp */; };
+		A073DBF21734D6C400889EAE /* parson.c in Sources */ = {isa = PBXBuildFile; fileRef = A073DBE71734D6C400889EAE /* parson.c */; };
 		A92275421517C094001B78AA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275411517C094001B78AA /* QuartzCore.framework */; };
 		A92275441517C094001B78AA /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275431517C094001B78AA /* OpenGLES.framework */; };
 		A92275461517C094001B78AA /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275451517C094001B78AA /* OpenAL.framework */; };
@@ -551,6 +552,9 @@
 		26743CD4170B852000D4BB29 /* PlayerStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerStatus.h; sourceTree = "<group>"; };
 		26743CD5170B852000D4BB29 /* PlayerStatusLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerStatusLoader.h; sourceTree = "<group>"; };
 		26743CD7170B853600D4BB29 /* PlayerStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerStatus.cpp; sourceTree = "<group>"; };
+		A073DBE71734D6C400889EAE /* parson.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parson.c; sourceTree = "<group>"; };
+		A073DBE81734D6C400889EAE /* parson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parson.h; sourceTree = "<group>"; };
+		A073DBE91734D6C400889EAE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		A922753D1517C094001B78AA /* CocosPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocosPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92275411517C094001B78AA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A92275431517C094001B78AA /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1164,17 +1168,37 @@
 			path = spine;
 			sourceTree = "<group>";
 		};
-		A92275321517C094001B78AA = {
+		A073DBE41734D6C400889EAE /* parson */ = {
+			isa = PBXGroup;
+			children = (
+				A073DBE91734D6C400889EAE /* README.md */,
+				A073DBE71734D6C400889EAE /* parson.c */,
+				A073DBE81734D6C400889EAE /* parson.h */,
+			);
+			name = parson;
+			path = ../libs/parson;
+			sourceTree = "<group>";
+		};
+		A073DBF91734DC9D00889EAE /* libs */ = {
 			isa = PBXGroup;
 			children = (
 				15A3D2EC1682F076002FB0C5 /* cocos2dx.xcodeproj */,
-				15A3D2F81682F0A0002FB0C5 /* bindings */,
-				15A3D3311682F0B5002FB0C5 /* chipmunk */,
-				D4545214156E28EF00887EB5 /* Classes */,
 				15A3D3AA1682F0D3002FB0C5 /* CocosDenshion */,
+				A073DBE41734D6C400889EAE /* parson */,
+				15A3D3311682F0B5002FB0C5 /* chipmunk */,
 				15A3D4A91682F1A4002FB0C5 /* extensions */,
-				A92275401517C094001B78AA /* Frameworks */,
+				15A3D2F81682F0A0002FB0C5 /* bindings */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		A92275321517C094001B78AA = {
+			isa = PBXGroup;
+			children = (
+				D4545214156E28EF00887EB5 /* Classes */,
 				D45446CC156DE73F00887EB5 /* ios */,
+				A073DBF91734DC9D00889EAE /* libs */,
+				A92275401517C094001B78AA /* Frameworks */,
 				A922753E1517C094001B78AA /* Products */,
 				15628F5B15F0F5C2000CF24B /* Resources */,
 			);
@@ -1497,6 +1521,7 @@
 				265C9016172F4B71001841CE /* spine-cocos2dx.cpp in Sources */,
 				265C901E1731916F001841CE /* Cocos2dPlayerCommon.cpp in Sources */,
 				267096721732EB4000B4E340 /* StreamMessagingHelper.cpp in Sources */,
+				A073DBF21734D6C400889EAE /* parson.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
