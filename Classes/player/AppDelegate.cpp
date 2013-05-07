@@ -48,7 +48,11 @@ extern "C" {
         }
         
         CCDirector::sharedDirector()->setContentScaleFactor(resourceSize.width/designSize.width);
-        CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionFixedWidth);
+        if(isPortrait) {
+            CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionFixedWidth);
+        } else {
+            CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionFixedHeight);
+        }
     }
     
     void AppDelegate::initGameView() {
