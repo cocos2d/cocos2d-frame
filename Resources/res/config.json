@@ -1,6 +1,30 @@
 {
 	"mobile" : {
 		"glview.pixelformat" : "rgb565",
-		"glview.depthformat" : "0"
+		"glview.depthformat" : "0",
+
+		"ios" : {
+			"glview.pixelformat" : "rgba8888",
+
+			"ipad" : {
+				"glview.depthformat" : "rgb565"
+			}
+
+		},
+
+		"android" : {
+			"glview.depthformat" : "stencil8_depth24",
+
+			""
+		}
+	}
+
+	"iphone5" : {
+		"glview.pixelformat" : "rgba555"
+
+		"white" : {
+			"name" : "hello"
+		}
+
 	}
 }

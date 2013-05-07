@@ -1,3 +1,9 @@
+//
+// Android only
+//
+
+#if defined(CC_TARGET_PLATFORM) && (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+
 #include <stdlib.h>
 #include <jni.h>
 #include <android/log.h>
@@ -86,3 +92,5 @@ extern "C" {
   void resetCocosApp() {
   }
 }
+
+#endif // #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)

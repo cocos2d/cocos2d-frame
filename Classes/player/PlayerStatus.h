@@ -11,8 +11,6 @@
 #include "jni/Java_org_cocos2dx_lib_Cocos2dxHelper.h"
 #endif
 
-#include "Java_org_cocos2dx_cocosplayer_CocosPlayerSocket.h"
-
 /*
  * Note: for some pretty hard fucked up reason, the order of inheritance is important!
  * When CCLayer is the 'first' inherited object:
