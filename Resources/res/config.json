@@ -1,0 +1,6 @@
+{
+	"mobile" : {
+		"glview.pixelformat" : "rgb565",
+		"glview.depthformat" : "0"
+	}
+}

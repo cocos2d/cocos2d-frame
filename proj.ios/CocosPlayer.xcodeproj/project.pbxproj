@@ -182,6 +182,7 @@
 		267096721732EB4000B4E340 /* StreamMessagingHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 267096701732EB4000B4E340 /* StreamMessagingHelper.cpp */; };
 		26743CD6170B852000D4BB29 /* MainSceneHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26743CD2170B852000D4BB29 /* MainSceneHelper.cpp */; };
 		26743CD8170B853600D4BB29 /* PlayerStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26743CD7170B853600D4BB29 /* PlayerStatus.cpp */; };
+		A0270DBA17386964002D76E9 /* res in Resources */ = {isa = PBXBuildFile; fileRef = A0270DB917386964002D76E9 /* res */; };
 		A073DBF21734D6C400889EAE /* parson.c in Sources */ = {isa = PBXBuildFile; fileRef = A073DBE71734D6C400889EAE /* parson.c */; };
 		A92275421517C094001B78AA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275411517C094001B78AA /* QuartzCore.framework */; };
 		A92275441517C094001B78AA /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275431517C094001B78AA /* OpenGLES.framework */; };
@@ -552,6 +553,7 @@
 		26743CD4170B852000D4BB29 /* PlayerStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerStatus.h; sourceTree = "<group>"; };
 		26743CD5170B852000D4BB29 /* PlayerStatusLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerStatusLoader.h; sourceTree = "<group>"; };
 		26743CD7170B853600D4BB29 /* PlayerStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerStatus.cpp; sourceTree = "<group>"; };
+		A0270DB917386964002D76E9 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = ../Resources/res; sourceTree = "<group>"; };
 		A073DBE71734D6C400889EAE /* parson.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parson.c; sourceTree = "<group>"; };
 		A073DBE81734D6C400889EAE /* parson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parson.h; sourceTree = "<group>"; };
 		A073DBE91734D6C400889EAE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -606,6 +608,7 @@
 		15628F5B15F0F5C2000CF24B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A0270DB917386964002D76E9 /* res */,
 				265C8F7B172F4467001841CE /* jsb_chipmunk_constants.js */,
 				265C8F7C172F4467001841CE /* jsb_chipmunk.js */,
 				265C8F7D172F4467001841CE /* jsb_cocos2d_constants.js */,
@@ -1367,6 +1370,7 @@
 				2650A2A5170B842C0007F98D /* libJSBinding.vcxproj in Resources */,
 				2650A2A6170B842C0007F98D /* libJSBinding.vcxproj.filters in Resources */,
 				2650A2A7170B842C0007F98D /* libJSBinding.vcxproj.user in Resources */,
+				A0270DBA17386964002D76E9 /* res in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

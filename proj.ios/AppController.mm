@@ -6,6 +6,7 @@
 #import "Cocos2dPlayerCommon.h"
 #import "RootViewController.h"
 #include "AppDelegate.h"
+#include "parson.h"
 
 ServerController *server;
 
@@ -88,6 +89,16 @@ static AppController* appController = NULL;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+	std::string str = CCFileUtils::sharedFileUtils()->fullPathForFilename("res/config.json");
+
+	JSON_Value *root_value = json_parse_file(str.c_str());
+	JSON_Object *root_obj = json_value_get_object(root_value);
+
+
+	JSON_Object *mobile = json_object_get_object(root_obj, "mobile");
+	const char *pixelformat = json_object_get_string(mobile, "glview.pixelformat");
+	printf("pixel format: %s\n", pixelformat);
 
     appController = self;
     // Override point for customization after application launch.
