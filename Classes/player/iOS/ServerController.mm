@@ -103,7 +103,6 @@ NSString *kCCBPlayerStatusStringScript = @"Action: Executing script";
 {
     [pipeReadHandle readInBackgroundAndNotify] ;
     NSString *str = [[NSString alloc] initWithData: [[notification userInfo] objectForKey: NSFileHandleNotificationDataItem] encoding: NSASCIIStringEncoding] ;
-    [self sendLog:str];
 }
 
 #pragma mark Control methods
