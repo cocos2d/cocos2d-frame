@@ -473,10 +473,14 @@ NSString *kCCBPlayerStatusStringScript = @"Action: Executing script";
         if ([[arr objectAtIndex:3] boolValue]) orientations |= UIInterfaceOrientationMaskLandscapeRight;
                 
         [RootViewController setDeviceOrientation:orientations];
-        if([[arr objectAtIndex:2] boolValue] || [[arr objectAtIndex:3] boolValue]) {
+        if([[arr objectAtIndex:2] boolValue]) {
             [[UIDevice currentDevice] setOrientation:UIInterfaceOrientationLandscapeLeft];
-        } else {
+        }else if([[arr objectAtIndex:3] boolValue]) {
+            [[UIDevice currentDevice] setOrientation:UIInterfaceOrientationLandscapeRight];
+        } else if([[arr objectAtIndex:0] boolValue]){
             [[UIDevice currentDevice] setOrientation:UIInterfaceOrientationPortrait];
+        } else {
+            [[UIDevice currentDevice] setOrientation:UIInterfaceOrientationPortraitUpsideDown];
         }
         handle_set_orient(([[arr objectAtIndex:0] boolValue] || [[arr objectAtIndex:1] boolValue]) ? true: false);
     }
