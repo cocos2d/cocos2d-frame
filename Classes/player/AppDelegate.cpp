@@ -214,6 +214,11 @@ extern "C" {
         
         CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
         CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
+
+#if JSB_ENABLE_DEBUGGER
+        sc->enableDebugger();
+#endif //JSB_ENABLE_DEBUGGER
+
         if(firstTime) {
             runMainScene();
             firstTime = false;
