@@ -15,17 +15,16 @@ It includes the following components:
 
 ## Starting a new cocos2d-project
 
-
-  $ git clone git://github.com/cocos2d/cocos2d-frame.git
-  $ cd cocos2d-frame
-  $ git submodule update --init --recursive
- 
+```
+$ git clone git://github.com/cocos2d/cocos2d-frame.git
+$ cd cocos2d-frame
+$ git submodule update --init --recursive
+```
 
 ## cocos2d-console
 
-cocos2d-frame is part of the cocos2d-console project. Basically if you type:
-```sh
+cocos2d-frame is part of the cocos2d-console project. Basically if you have cocos2d-console installed and type:
+```
 $ cocos2d new "My Project"
 ``` 
-it will clone cocos2d-frame.
-
+then it will clone cocos2d-frame.
