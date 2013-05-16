@@ -15,14 +15,17 @@ ServerController *server;
  *
  */
 
+// cocos2d application instance
+static AppDelegate s_sharedApplication;
+static AppController* appController = NULL;
+
 extern "C" {
 
     
-    void setDeviceResolutionJNI(const char *text) {
-        
+    void setDeviceResolution(const char *text) {        
     }
     
-    void cleanCacheDirJNI(){
+    void cleanCacheDir(){
         cleanCache();
         [server sendFileList];
     }
@@ -68,8 +71,10 @@ extern "C" {
     void resetCocosApp() {
         [[AppController appController] resetCocos2d];
     }
-
     
+    void createPlayerServer(int port) {
+        startServer(s_sharedApplication.isRetina, s_sharedApplication.isIPhone);
+    }
 }
 
 @implementation AppController
@@ -77,9 +82,7 @@ extern "C" {
 #pragma mark -
 #pragma mark Application lifecycle
 
-// cocos2d application instance
-static AppDelegate s_sharedApplication;
-static AppController* appController = NULL;
+
 
 
 + (AppController*) appController
@@ -135,7 +138,6 @@ static AppController* appController = NULL;
 
     cocos2d::CCApplication::sharedApplication()->run();
     
-    startServer(s_sharedApplication.isRetina, s_sharedApplication.isIPhone);
     return YES;
 }
 

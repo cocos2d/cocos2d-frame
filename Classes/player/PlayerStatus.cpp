@@ -43,11 +43,6 @@ SEL_MenuHandler PlayerStatus::onResolveCCBCCMenuItemSelector(CCObject * pTarget,
   return NULL;    
 }
 
-
-void PlayerStatus::setDeviceResolution(std::string res) {
-  setDeviceResolutionJNI(res.c_str());
-}
-
 void updatePairing(const char *pairing);
 
 void editBoxCallbackFunc(const char* pText, void* ctx)
@@ -74,7 +69,7 @@ void PlayerStatus::pressedPair(CCObject * pSender, cocos2d::extension::CCControl
 
 
 void PlayerStatus::pressedReset(CCObject * pSender, cocos2d::extension::CCControlEvent pCCControlEvent) {
-    cleanCacheDirJNI();
+    cleanCacheDir();
     CCBHelper::checkIsMainJSPresent();
 }
 
