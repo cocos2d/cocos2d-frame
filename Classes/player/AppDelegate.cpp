@@ -55,8 +55,9 @@ extern "C" {
         }
     }
     
-    void AppDelegate::initGameView() {
-        
+    std::string AppDelegate::initGameView() {
+
+        std::string res;
         // initialize director
         CCDirector *pDirector = CCDirector::sharedDirector();
         pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
@@ -69,7 +70,6 @@ extern "C" {
         }
         
         std::vector<std::string> resDirOrders;
-        std::string res;
         TargetPlatform platform = CCApplication::sharedApplication()->getTargetPlatform();
         
         
@@ -188,18 +188,18 @@ extern "C" {
         searchPaths.insert(searchPaths.begin(), pFileUtils->getWritablePath());
         pFileUtils->setSearchPaths(searchPaths);
         
-        PlayerStatus::setDeviceResolution(res);
         // turn on display FPS
         pDirector->setDisplayStats(true);
         
         // set FPS. the default value is 1.0/60 if you don't call this
         pDirector->setAnimationInterval(1.0 / 60);
+	return res;
     }
     
     bool AppDelegate::applicationDidFinishLaunching()
     {
-        
-        initGameView();
+
+        std::string res = initGameView();
         ScriptingCore* sc = ScriptingCore::getInstance();
         sc->addRegisterCallback(register_all_cocos2dx);
         sc->addRegisterCallback(register_all_cocos2dx_extension);
@@ -209,7 +209,9 @@ extern "C" {
         sc->addRegisterCallback(jsb_register_system);
         sc->addRegisterCallback(jsb_register_chipmunk);
         sc->addRegisterCallback(JSB_register_opengl);
+#ifdef CC_PLAYER
         sc->addRegisterCallback(register_CocosPlayer);
+#endif
         sc->start();
         
         CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
@@ -218,6 +220,10 @@ extern "C" {
 #if JSB_ENABLE_DEBUGGER
         sc->enableDebugger();
 #endif //JSB_ENABLE_DEBUGGER
+        
+#ifdef CC_PLAYER
+        setDeviceResolution(res.c_str());
+        createPlayerServer(0);
 
         if(firstTime) {
             runMainScene();
@@ -225,6 +231,9 @@ extern "C" {
         } else {
             handle_ccb_run();
         }
+#else
+        sc->runScript("main.js");
+#endif
     }
     
     
