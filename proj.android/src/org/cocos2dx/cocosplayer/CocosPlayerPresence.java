@@ -29,6 +29,7 @@ public class CocosPlayerPresence extends Service {
 	protected static String SERVICE_TYPE_PART1 = "_CocosP-";
 	protected static String SERVICE_TYPE_PART2 = "._tcp.";
 
+        private static boolean IS_ZEROCONF = true;
 	protected static final String TAG = "CocosPlayerSocket";
 
 	private static RegistrationListener mRegistrationListener;
@@ -70,12 +71,17 @@ public class CocosPlayerPresence extends Service {
 
 		Log.i(TAG, "Starting NSD Service");
 		running = true;
-		mNsdManager = (NsdManager) cw.getSystemService(Context.NSD_SERVICE);
 
-		initializeRegistrationListener();
-		initializeResolveListener();
+		if(IS_ZEROCONF) {
 
-		registerService(port);
+		    mNsdManager = (NsdManager) cw.getSystemService(Context.NSD_SERVICE);
+		    initializeRegistrationListener();
+		    initializeResolveListener();
+		    registerService(port);
+
+		} else {
+		    
+		}
 
 		return 1;
 	}
@@ -83,16 +89,20 @@ public class CocosPlayerPresence extends Service {
 	@Override
 	public void onDestroy() {
 		running = false;
-		mNsdManager.unregisterService(mRegistrationListener);
-		// mNsdManager.stopServiceDiscovery(mDiscoveryListener);
+		if(IS_ZEROCONF) {
+		    mNsdManager.unregisterService(mRegistrationListener);
+		    // mNsdManager.stopServiceDiscovery(mDiscoveryListener);
+		}
 		super.onDestroy();
 	}
 
 	public static void destroy() {
 		try {
 			running = false;
-			Log.i(TAG, "Stopping NSD Service");
-			mNsdManager.unregisterService(mRegistrationListener);
+			if(IS_ZEROCONF) {
+			    Log.i(TAG, "Stopping NSD Service");
+			    mNsdManager.unregisterService(mRegistrationListener);
+			}
 		} catch(Exception e) {
 			Log.e(TAG, "Error: NSD service stopped before being registered");
 		}
@@ -136,6 +146,8 @@ public class CocosPlayerPresence extends Service {
 
 			@Override
 			public void onServiceUnregistered(NsdServiceInfo arg0) {
+			    Log.i(TAG, "Service Unregistered");
+			    CocosPlayerSocket.disconnectClient();
 			}
 
 			@Override

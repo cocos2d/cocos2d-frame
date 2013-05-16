@@ -33,11 +33,16 @@ import com.dd.plist.UID;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.util.Enumeration;
+import java.net.NetworkInterface;
 
 public class CocosPlayerSocket {
 
 	private static final String kCCBPlayerStatusStringNotConnected = "Connect by running CocosBuilder on the same local wireless network as CocosPlayer.\nIf multiple instances of CocosBuilder is run on the same network, use a unique pairing code.";
 	private static final String kCCBPlayerStatusStringConnected = "idle";
+	private static final String kCCBPlayerStatusStringReadyWithDetails = "Server ready with IP: ";
 	private static final String kCCBNetworkStatusStringConnected = "Connected!";
 	private static final String kCCBNetworkStatusStringNotConnected = "Waiting for Connection";
 
@@ -89,6 +94,33 @@ public class CocosPlayerSocket {
 
 	private void runScript(String script) {
 	    nativeRunScript(script);
+	}
+
+        private static String getIPandPortMessage() {
+	    try {
+		String ret = kCCBPlayerStatusStringReadyWithDetails+" ";
+		Enumeration e=NetworkInterface.getNetworkInterfaces();
+		boolean firstAddr = true;
+		while(e.hasMoreElements())
+		    {
+			NetworkInterface n=(NetworkInterface) e.nextElement();
+			Enumeration ee = n.getInetAddresses();
+			while(ee.hasMoreElements())
+			    {
+				InetAddress i= (InetAddress) ee.nextElement();
+				if (!i.isLoopbackAddress()  &&  
+				    i.isSiteLocalAddress()) {
+				    if(firstAddr) ret += i.getHostAddress();
+				    else ret += " or "+i.getHostAddress();
+				    firstAddr = false;
+				}
+			    }
+		    }
+		ret += " and Port: "+server.getLocalPort();
+		return ret;
+	    } catch(Exception e) {
+		return kCCBPlayerStatusStringNotConnected;
+	    }
 	}
 
 	private static native void nativeRunCCB();
@@ -214,11 +246,12 @@ public class CocosPlayerSocket {
 
 		}
 
+
 		protected Void doInBackground(ServerSocket... args) {
 			try {
 
 				setConnectionMessage(kCCBNetworkStatusStringNotConnected);
-				setStatusMessage(kCCBPlayerStatusStringNotConnected);
+				setStatusMessage(getIPandPortMessage());
 				ServerSocket server = args[0];
 				while(true) {
 
@@ -264,7 +297,7 @@ public class CocosPlayerSocket {
 				byte[] header = new byte[4];
 
 				while ((nRead = client.getInputStream().read(header, 0, header.length)) != -1) {
-
+				    
 					int lengthToRead = CCBStreamHandler.processHeader(header);
 
 					if(lengthToRead > 0) {
@@ -314,7 +347,7 @@ public class CocosPlayerSocket {
 			mPairingCode = code;
 
 			setConnectionMessage(kCCBNetworkStatusStringNotConnected);
-			setStatusMessage(kCCBPlayerStatusStringNotConnected);
+			setStatusMessage(getIPandPortMessage());
 
 			CocosPlayerPresence.destroy();
 			CocosPlayerPresence.setContext(cw);
@@ -333,13 +366,20 @@ public class CocosPlayerSocket {
 		CCBStreamHandler.sendString(CCBStreamHandler.getLogMsg(log), client,
 				out);
 	}
-	
 
-	public void createServer() {
+        public static void disconnectClient() {
+	    try {
+		Log.i(TAG, "DISCONNECTING CLIENT");
+		client.close();
+	    } catch(Exception e) {
+	    }
+	}
+
+	public void createServer(int port) {
 
 		Log.i(TAG, "Creating server "+running);
 		try {
-			server = new ServerSocket(0);
+			server = new ServerSocket(port);
 			Log.i(TAG, "IP " + server.getInetAddress()
 					+ ", running on port " + server.getLocalPort());
 
@@ -353,5 +393,4 @@ public class CocosPlayerSocket {
 		} catch(Exception e) {
 		}
 	}
-
 }

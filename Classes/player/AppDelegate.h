@@ -11,7 +11,6 @@
 
 #include "CCApplication.h"
 #include "jsapi.h"
-#include "Cocos2dPlayerCommon.h"
 #include "generated/jsb_cocos2dx_auto.hpp"
 #include "generated/jsb_cocos2dx_extension_auto.hpp"
 #include "jsb_cocos2dx_extension_manual.h"
@@ -21,8 +20,11 @@
 #include "js_bindings_system_registration.h"
 #include "jsb_opengl_registration.h"
 #include "platform/CCDevice.h"
-#include "StreamMessagingHelper.h"
 
+#ifdef CC_PLAYER
+#include "Cocos2dPlayerCommon.h"
+#include "StreamMessagingHelper.h"
+#endif
 
 /**
  @brief    The cocos2d Application.
@@ -57,7 +59,7 @@ public:
      @param  the pointer of the application
      */
     virtual void applicationWillEnterForeground();
-    void initGameView();
+    std::string initGameView();
     static void setIsPortrait(bool isPortrait);
    
 };
