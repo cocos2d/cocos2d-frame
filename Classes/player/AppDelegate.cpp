@@ -186,6 +186,7 @@ extern "C" {
         
         std::vector<std::string> searchPaths = pFileUtils->getSearchPaths();
         searchPaths.insert(searchPaths.begin(), pFileUtils->getWritablePath());
+        searchPaths.insert(searchPaths.begin(), "PlayerResources");
         pFileUtils->setSearchPaths(searchPaths);
         
         // turn on display FPS
