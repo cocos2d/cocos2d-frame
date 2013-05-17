@@ -142,7 +142,6 @@
 		265C9016172F4B71001841CE /* spine-cocos2dx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 265C9001172F4B71001841CE /* spine-cocos2dx.cpp */; };
 		2670967A173C7CA300B4E340 /* PlayerResources in Resources */ = {isa = PBXBuildFile; fileRef = 26709678173C7CA300B4E340 /* PlayerResources */; };
 		2670967B173C7CA300B4E340 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 26709679173C7CA300B4E340 /* res */; };
-		A073DBF21734D6C400889EAE /* parson.c in Sources */ = {isa = PBXBuildFile; fileRef = A073DBE71734D6C400889EAE /* parson.c */; };
 		A09773BF1746B70E001BA00C /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A097738D1746B70E001BA00C /* AppDelegate.cpp */; };
 		A09773C01746B70E001BA00C /* Cocos2dPlayerCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A097738F1746B70E001BA00C /* Cocos2dPlayerCommon.cpp */; };
 		A09773C11746B70E001BA00C /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A09773911746B70E001BA00C /* Config.cpp */; };
@@ -463,9 +462,6 @@
 		265C9003172F4B71001841CE /* spine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spine.h; sourceTree = "<group>"; };
 		26709678173C7CA300B4E340 /* PlayerResources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PlayerResources; path = ../Resources/PlayerResources; sourceTree = "<group>"; };
 		26709679173C7CA300B4E340 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = ../Resources/res; sourceTree = "<group>"; };
-		A073DBE71734D6C400889EAE /* parson.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parson.c; sourceTree = "<group>"; };
-		A073DBE81734D6C400889EAE /* parson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parson.h; sourceTree = "<group>"; };
-		A073DBE91734D6C400889EAE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		A097738D1746B70E001BA00C /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		A097738E1746B70E001BA00C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A097738F1746B70E001BA00C /* Cocos2dPlayerCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cocos2dPlayerCommon.cpp; sourceTree = "<group>"; };
@@ -1013,24 +1009,12 @@
 			path = spine;
 			sourceTree = "<group>";
 		};
-		A073DBE41734D6C400889EAE /* parson */ = {
-			isa = PBXGroup;
-			children = (
-				A073DBE91734D6C400889EAE /* README.md */,
-				A073DBE71734D6C400889EAE /* parson.c */,
-				A073DBE81734D6C400889EAE /* parson.h */,
-			);
-			name = parson;
-			path = ../libs/parson;
-			sourceTree = "<group>";
-		};
 		A073DBF91734DC9D00889EAE /* libs */ = {
 			isa = PBXGroup;
 			children = (
 				15A3D2EC1682F076002FB0C5 /* cocos2dx.xcodeproj */,
 				15A3D3AA1682F0D3002FB0C5 /* CocosDenshion */,
 				A097738A1746B70E001BA00C /* CocosPlayer */,
-				A073DBE41734D6C400889EAE /* parson */,
 				15A3D3311682F0B5002FB0C5 /* chipmunk */,
 				15A3D4A91682F1A4002FB0C5 /* extensions */,
 				15A3D2F81682F0A0002FB0C5 /* bindings */,
@@ -1411,7 +1395,6 @@
 				265C9014172F4B71001841CE /* Slot.cpp in Sources */,
 				265C9015172F4B71001841CE /* SlotData.cpp in Sources */,
 				265C9016172F4B71001841CE /* spine-cocos2dx.cpp in Sources */,
-				A073DBF21734D6C400889EAE /* parson.c in Sources */,
 				A09773BF1746B70E001BA00C /* AppDelegate.cpp in Sources */,
 				A09773C01746B70E001BA00C /* Cocos2dPlayerCommon.cpp in Sources */,
 				A09773C11746B70E001BA00C /* Config.cpp in Sources */,
