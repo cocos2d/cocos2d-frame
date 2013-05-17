@@ -142,7 +142,6 @@
 		265C9016172F4B71001841CE /* spine-cocos2dx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 265C9001172F4B71001841CE /* spine-cocos2dx.cpp */; };
 		2670967A173C7CA300B4E340 /* PlayerResources in Resources */ = {isa = PBXBuildFile; fileRef = 26709678173C7CA300B4E340 /* PlayerResources */; };
 		2670967B173C7CA300B4E340 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 26709679173C7CA300B4E340 /* res */; };
-		A09773BF1746B70E001BA00C /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A097738D1746B70E001BA00C /* AppDelegate.cpp */; };
 		A09773C01746B70E001BA00C /* Cocos2dPlayerCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A097738F1746B70E001BA00C /* Cocos2dPlayerCommon.cpp */; };
 		A09773C11746B70E001BA00C /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A09773911746B70E001BA00C /* Config.cpp */; };
 		A09773C21746B70E001BA00C /* CCBDirectoryComparer.m in Sources */ = {isa = PBXBuildFile; fileRef = A09773951746B70E001BA00C /* CCBDirectoryComparer.m */; };
@@ -160,6 +159,7 @@
 		A09773CE1746B70E001BA00C /* MainSceneHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A09773B71746B70E001BA00C /* MainSceneHelper.cpp */; };
 		A09773CF1746B70E001BA00C /* PlayerStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A09773B91746B70E001BA00C /* PlayerStatus.cpp */; };
 		A09773D01746B70E001BA00C /* StreamMessagingHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A09773BC1746B70E001BA00C /* StreamMessagingHelper.cpp */; };
+		A097740E1746C9F3001BA00C /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A097740C1746C9F3001BA00C /* AppDelegate.cpp */; };
 		A92275421517C094001B78AA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275411517C094001B78AA /* QuartzCore.framework */; };
 		A92275441517C094001B78AA /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275431517C094001B78AA /* OpenGLES.framework */; };
 		A92275461517C094001B78AA /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275451517C094001B78AA /* OpenAL.framework */; };
@@ -462,8 +462,6 @@
 		265C9003172F4B71001841CE /* spine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spine.h; sourceTree = "<group>"; };
 		26709678173C7CA300B4E340 /* PlayerResources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PlayerResources; path = ../Resources/PlayerResources; sourceTree = "<group>"; };
 		26709679173C7CA300B4E340 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = ../Resources/res; sourceTree = "<group>"; };
-		A097738D1746B70E001BA00C /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
-		A097738E1746B70E001BA00C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A097738F1746B70E001BA00C /* Cocos2dPlayerCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cocos2dPlayerCommon.cpp; sourceTree = "<group>"; };
 		A09773901746B70E001BA00C /* Cocos2dPlayerCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cocos2dPlayerCommon.h; sourceTree = "<group>"; };
 		A09773911746B70E001BA00C /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
@@ -505,6 +503,8 @@
 		A09773BB1746B70E001BA00C /* PlayerStatusLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerStatusLoader.h; sourceTree = "<group>"; };
 		A09773BC1746B70E001BA00C /* StreamMessagingHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StreamMessagingHelper.cpp; sourceTree = "<group>"; };
 		A09773BD1746B70E001BA00C /* StreamMessagingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamMessagingHelper.h; sourceTree = "<group>"; };
+		A097740C1746C9F3001BA00C /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
+		A097740D1746C9F3001BA00C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A922753D1517C094001B78AA /* MyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92275411517C094001B78AA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A92275431517C094001B78AA /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1025,8 +1025,6 @@
 		A097738A1746B70E001BA00C /* CocosPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				A097738D1746B70E001BA00C /* AppDelegate.cpp */,
-				A097738E1746B70E001BA00C /* AppDelegate.h */,
 				A097738F1746B70E001BA00C /* Cocos2dPlayerCommon.cpp */,
 				A09773901746B70E001BA00C /* Cocos2dPlayerCommon.h */,
 				A09773911746B70E001BA00C /* Config.cpp */,
@@ -1176,6 +1174,8 @@
 		D4545214156E28EF00887EB5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A097740C1746C9F3001BA00C /* AppDelegate.cpp */,
+				A097740D1746C9F3001BA00C /* AppDelegate.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1395,7 +1395,6 @@
 				265C9014172F4B71001841CE /* Slot.cpp in Sources */,
 				265C9015172F4B71001841CE /* SlotData.cpp in Sources */,
 				265C9016172F4B71001841CE /* spine-cocos2dx.cpp in Sources */,
-				A09773BF1746B70E001BA00C /* AppDelegate.cpp in Sources */,
 				A09773C01746B70E001BA00C /* Cocos2dPlayerCommon.cpp in Sources */,
 				A09773C11746B70E001BA00C /* Config.cpp in Sources */,
 				A09773C21746B70E001BA00C /* CCBDirectoryComparer.m in Sources */,
@@ -1412,6 +1411,7 @@
 				A09773CE1746B70E001BA00C /* MainSceneHelper.cpp in Sources */,
 				A09773CF1746B70E001BA00C /* PlayerStatus.cpp in Sources */,
 				A09773D01746B70E001BA00C /* StreamMessagingHelper.cpp in Sources */,
+				A097740E1746C9F3001BA00C /* AppDelegate.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

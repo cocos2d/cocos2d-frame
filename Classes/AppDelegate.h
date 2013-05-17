@@ -35,6 +35,9 @@
 
 class  AppDelegate : private cocos2d::CCApplication
 {
+	/** initializes JavaScript */
+	void startJavaScript( const char *js_script );
+
 public:
     bool isRetina, isIPhone;
     
