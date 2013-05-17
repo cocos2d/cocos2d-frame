@@ -163,11 +163,13 @@ public class CCBStreamHandler {
 	}
 
 	public static void setDeviceResolution(String res) {
-		CocosPlayerSocket server = new CocosPlayerSocket();
 		Log.i(TAG, "Starting with resolution: "+res);
 		resolution = res;
-		server.setContext(CocosPlayer.c);
-		server.createServer();
 	}
 
+        public static void createPlayerServer(int port) {
+		CocosPlayerSocket server = new CocosPlayerSocket();
+		server.setContext(CocosPlayer.c);
+		server.createServer(port);	    
+	}
 }

@@ -2,8 +2,6 @@
 // Android only
 //
 
-#if defined(CC_TARGET_PLATFORM) && (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-
 #include <stdlib.h>
 #include <jni.h>
 #include <android/log.h>
@@ -56,7 +54,7 @@ extern "C" {
   }
   
 
-   void cleanCacheDirJNI() {
+   void cleanCacheDir() {
         JniMethodInfo t;
         if (JniHelper::getStaticMethodInfo(t, SOCKET_CLASS_NAME, "cleanCache", "()V")) {
 	  t.env->CallStaticVoidMethod(t.classID, t.methodID);
@@ -64,7 +62,7 @@ extern "C" {
         }
    }
 
-  void setDeviceResolutionJNI(const char *res) {
+  void setDeviceResolution(const char *res) {
       JniMethodInfo t;
       if (JniHelper::getStaticMethodInfo(t, STREAM_CLASS_NAME, "setDeviceResolution", "(Ljava/lang/String;)V")) {
 	  jstring stringArg1 = t.env->NewStringUTF(res);
@@ -72,6 +70,14 @@ extern "C" {
 	  t.env->DeleteLocalRef(stringArg1);
 	  t.env->DeleteLocalRef(t.classID);
       }
+  }
+
+  void createPlayerServer(int port) {
+      JniMethodInfo t;
+      if (JniHelper::getStaticMethodInfo(t, STREAM_CLASS_NAME, "createPlayerServer", "(I)V")) {
+	  t.env->CallStaticVoidMethod(t.classID, t.methodID, port);
+	  t.env->DeleteLocalRef(t.classID);
+      }    
   }
 
 
@@ -92,5 +98,3 @@ extern "C" {
   void resetCocosApp() {
   }
 }
-
-#endif // #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)

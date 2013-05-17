@@ -21,7 +21,7 @@ bool runMainScene() {
     transitionColor.g = 0;
     transitionColor.b = 0;
     
-    mainScene = PlayerStatus::loadMainScene("StatusLayer.ccbi");
+    mainScene = PlayerStatus::loadMainScene("PlayerResources/StatusLayer.ccbi");
     
     if(CCDirector::sharedDirector()->getRunningScene() != NULL && CCDirector::sharedDirector()->getRunningScene() != mainScene) {
         CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, mainScene, transitionColor));
@@ -64,6 +64,7 @@ void handle_ccb_run() {
     CCFileUtils::sharedFileUtils()->purgeCachedEntries();
     SimpleAudioEngine::sharedEngine()->end();
     CCFileUtils::sharedFileUtils()->loadFilenameLookupDictionaryFromFile("fileLookup.plist");
+    ScriptingCore::getInstance()->reset();
     ScriptingCore::getInstance()->runScript("main.js");
 }
 

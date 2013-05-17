@@ -27,8 +27,9 @@ extern "C" {
     extern void handle_set_message(const char *msg);
     extern void handle_set_status(const char *msg);
     extern void updatePairing(const char *code);
-    extern void cleanCacheDirJNI();
-    extern void setDeviceResolutionJNI(const char* res);
+    extern void cleanCacheDir();
+    extern void createPlayerServer(int port);
+    extern void setDeviceResolution(const char* res);
     extern void sendLogMsg(const char* log);
     extern void resetCocosApp();
     extern void runJSApp();
