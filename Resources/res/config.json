@@ -16,7 +16,10 @@
 			"glview.depthformat" : "stencil8_depth24",
 
 			""
-		}
+		},
+
+		"debugger" : 1,
+		"player" : 1
 	}
 
 	"iphone5" : {
