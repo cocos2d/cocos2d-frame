@@ -160,6 +160,13 @@
 		A09773CF1746B70E001BA00C /* PlayerStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A09773B91746B70E001BA00C /* PlayerStatus.cpp */; };
 		A09773D01746B70E001BA00C /* StreamMessagingHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A09773BC1746B70E001BA00C /* StreamMessagingHelper.cpp */; };
 		A097740E1746C9F3001BA00C /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A097740C1746C9F3001BA00C /* AppDelegate.cpp */; };
+		A09775BA1746D069001BA00C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A09775B31746D069001BA00C /* Default-568h@2x.png */; };
+		A09775BB1746D069001BA00C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A09775B41746D069001BA00C /* Default.png */; };
+		A09775BC1746D069001BA00C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A09775B51746D069001BA00C /* Default@2x.png */; };
+		A09775BD1746D069001BA00C /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = A09775B61746D069001BA00C /* Icon-57.png */; };
+		A09775BE1746D069001BA00C /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = A09775B71746D069001BA00C /* Icon-72.png */; };
+		A09775BF1746D069001BA00C /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = A09775B81746D069001BA00C /* Icon-114.png */; };
+		A09775C01746D069001BA00C /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = A09775B91746D069001BA00C /* Icon-144.png */; };
 		A92275421517C094001B78AA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275411517C094001B78AA /* QuartzCore.framework */; };
 		A92275441517C094001B78AA /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275431517C094001B78AA /* OpenGLES.framework */; };
 		A92275461517C094001B78AA /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275451517C094001B78AA /* OpenAL.framework */; };
@@ -505,6 +512,13 @@
 		A09773BD1746B70E001BA00C /* StreamMessagingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamMessagingHelper.h; sourceTree = "<group>"; };
 		A097740C1746C9F3001BA00C /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		A097740D1746C9F3001BA00C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A09775B31746D069001BA00C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A09775B41746D069001BA00C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		A09775B51746D069001BA00C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A09775B61746D069001BA00C /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57.png"; sourceTree = "<group>"; };
+		A09775B71746D069001BA00C /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		A09775B81746D069001BA00C /* Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-114.png"; sourceTree = "<group>"; };
+		A09775B91746D069001BA00C /* Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-144.png"; sourceTree = "<group>"; };
 		A922753D1517C094001B78AA /* MyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92275411517C094001B78AA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A92275431517C094001B78AA /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1160,6 +1174,13 @@
 		D45446CC156DE73F00887EB5 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				A09775B31746D069001BA00C /* Default-568h@2x.png */,
+				A09775B41746D069001BA00C /* Default.png */,
+				A09775B51746D069001BA00C /* Default@2x.png */,
+				A09775B61746D069001BA00C /* Icon-57.png */,
+				A09775B71746D069001BA00C /* Icon-72.png */,
+				A09775B81746D069001BA00C /* Icon-114.png */,
+				A09775B91746D069001BA00C /* Icon-144.png */,
 				D45446D6156DE79D00887EB5 /* Info.plist */,
 				D45446CD156DE74F00887EB5 /* AppController.h */,
 				D45446CE156DE74F00887EB5 /* AppController.mm */,
@@ -1257,6 +1278,13 @@
 				2670967A173C7CA300B4E340 /* PlayerResources in Resources */,
 				2670967B173C7CA300B4E340 /* res in Resources */,
 				A09773C41746B70E001BA00C /* LICENSE in Resources */,
+				A09775BA1746D069001BA00C /* Default-568h@2x.png in Resources */,
+				A09775BB1746D069001BA00C /* Default.png in Resources */,
+				A09775BC1746D069001BA00C /* Default@2x.png in Resources */,
+				A09775BD1746D069001BA00C /* Icon-57.png in Resources */,
+				A09775BE1746D069001BA00C /* Icon-72.png in Resources */,
+				A09775BF1746D069001BA00C /* Icon-114.png in Resources */,
+				A09775C01746D069001BA00C /* Icon-144.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
