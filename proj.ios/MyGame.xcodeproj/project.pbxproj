@@ -1199,7 +1199,7 @@
 				A097740D1746C9F3001BA00C /* AppDelegate.h */,
 			);
 			name = Classes;
-			path = ../Classes;
+			path = ../shared/Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
