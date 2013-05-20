@@ -7,14 +7,15 @@ LOCAL_MODULE := cocosplayer_shared
 LOCAL_MODULE_FILENAME := libcocosplayer
 
 LOCAL_SRC_FILES := cocosplayer/main.cpp \
-                   ../../shared/Classes/player/PlayerStatus.cpp\
-                   ../../shared/Classes/player/AppDelegate.cpp \
-                   ../../shared/Classes/player/MainSceneHelper.cpp \
-                   ../../shared/Classes/player/android/Java_org_cocos2dx_cocosplayer_CocosPlayerSocket.cpp \
-                   ../../shared/Classes/player/Cocos2dPlayerCommon.cpp \
-                   ../../shared/Classes/player/StreamMessagingHelper.cpp \
+                   ../../shared/Classes/AppDelegate.cpp \
+                   ../../libs/CocosPlayer/PlayerStatus.cpp\
+                   ../../libs/CocosPlayer/MainSceneHelper.cpp \
+                   ../../libs/CocosPlayer/Cocos2dPlayerCommon.cpp \
+                   ../../libs/CocosPlayer/StreamMessagingHelper.cpp \
+                   ../../libs/CocosPlayer/android/Java_org_cocos2dx_cocosplayer_CocosPlayerSocket.cpp
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../shared/Classes/player
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../shared/Classes \
+                  $(LOCAL_PATH)/../../libs/CocosPlayer
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocosdenshion_static
