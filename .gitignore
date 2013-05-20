@@ -13,7 +13,7 @@
 *.a
 
 # git ignore template from: http://cocoaheads.tumblr.com/post/1350304132/gitignore-template-for-xcode3-4
-*.pyc 
+*.pyc
 
 # old school
 .svn
@@ -34,6 +34,7 @@ profile
 xcuserdata/
 project.xcworkspace/
 
+
 # Other source repository archive directories (protects when importing)
 .hg
 .svn
@@ -42,5 +43,12 @@ CVS
 *~.nib
 *.swp
 *~
+
+# Android generated files
+proj.android/assets/
+proj.android/bin/
+proj.android/gen/
+proj.android/obj/
+proj.android/lint.xml
 
 
