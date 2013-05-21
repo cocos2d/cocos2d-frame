@@ -370,6 +370,8 @@ NSString *kCCBPlayerStatusStringScript = @"Action: Executing script";
 	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 		self.playerStatus = kCCBPlayerStatusPlay;
 		[self runJSApp];
+        
+        [self sendRunning];
 	});
 
 }
@@ -662,6 +664,14 @@ NSString *kCCBPlayerStatusStringScript = @"Action: Executing script";
         NSLog(@"key: %@, value: %@", key, [msg objectForKey:key]);
         
     }
+}
+
+- (void) sendRunning
+{
+    NSMutableDictionary* msg = [NSMutableDictionary dictionary];
+    [msg setObject:@"running" forKey:@"cmd"];
+    
+    [self sendMessage:msg];
 }
 
 #pragma mark Common
