@@ -249,6 +249,7 @@ std::string AppDelegate::initGameView()
 	std::vector<std::string> searchPaths = pFileUtils->getSearchPaths();
 	searchPaths.insert(searchPaths.begin(), pFileUtils->getWritablePath());
 	searchPaths.insert(searchPaths.begin(), "PlayerResources");
+	searchPaths.insert(searchPaths.begin(), "js");
 	pFileUtils->setSearchPaths(searchPaths);
 	
 	// turn on display FPS
