@@ -180,6 +180,7 @@
 		D45446D5156DE74F00887EB5 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446D2156DE74F00887EB5 /* RootViewController.mm */; };
 		D454520A156E22B400887EB5 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D4545209156E22B400887EB5 /* libxml2.dylib */; };
 		D454520C156E22BD00887EB5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D454520B156E22BD00887EB5 /* libz.dylib */; };
+		E8233BCF174C3BB300B8ED2E /* js in Resources */ = {isa = PBXBuildFile; fileRef = E8233BCE174C3BB300B8ED2E /* js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -537,6 +538,7 @@
 		D45446D6156DE79D00887EB5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4545209156E22B400887EB5 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		D454520B156E22BD00887EB5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		E8233BCE174C3BB300B8ED2E /* js */ = {isa = PBXFileReference; lastKnownFileType = folder; name = js; path = "../libs/cocos2d-x/scripting/javascript/bindings/js"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -565,6 +567,7 @@
 		15628F5B15F0F5C2000CF24B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E8233BCE174C3BB300B8ED2E /* js */,
 				26709678173C7CA300B4E340 /* PlayerResources */,
 				26709679173C7CA300B4E340 /* res */,
 			);
@@ -1285,6 +1288,7 @@
 				A09775BE1746D069001BA00C /* Icon-72.png in Resources */,
 				A09775BF1746D069001BA00C /* Icon-114.png in Resources */,
 				A09775C01746D069001BA00C /* Icon-144.png in Resources */,
+				E8233BCF174C3BB300B8ED2E /* js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
