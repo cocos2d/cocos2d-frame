@@ -660,10 +660,6 @@ NSString *kCCBPlayerStatusStringScript = @"Action: Executing script";
     [msg setObject:dirFiles forKey:@"filelist"];
     
     [self sendMessage:msg];
-    for (id key in msg) {
-        NSLog(@"key: %@, value: %@", key, [msg objectForKey:key]);
-        
-    }
 }
 
 - (void) sendRunning
