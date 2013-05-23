@@ -263,14 +263,21 @@ std::string AppDelegate::initGameView()
 
 bool AppDelegate::applicationDidFinishLaunching()
 {
+	//
+	// 1:
+	// Load config file
+	//
+	CCConfiguration::sharedConfiguration()->loadConfigFile("res/config.plist");
 
 	//
+	// 2:
 	// If your game is going to use JS, you need to call this method
 	// otherwise you can commnet out this method
 	//
 	this->startJavaScript("main.js");
 
 	//
+	// 3:
 	// For C++ only games, add your code here
 	//
 
