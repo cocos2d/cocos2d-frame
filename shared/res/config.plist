@@ -4,6 +4,8 @@
 <dict>
 	<key>data</key>
 	<dict>
+		<key>cocos2d.player.enabled</key>
+		<false/>
 		<key>game.version</key>
 		<string>1.0</string>
 		<key>game.name</key>

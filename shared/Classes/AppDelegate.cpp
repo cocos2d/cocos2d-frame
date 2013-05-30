@@ -91,7 +91,10 @@ void AppDelegate::startJavaScript( const char *js_script )
 	sc->addRegisterCallback(jsb_register_chipmunk);
 	sc->addRegisterCallback(JSB_register_opengl);
 #ifdef CC_PLAYER
-	sc->addRegisterCallback(register_CocosPlayer);
+	// CocosPlayer support could be added at compile time, but it can be disabled at runtime
+	bool player_enabled = CCConfiguration::sharedConfiguration()->getBool("cocos2d.player.enabled");
+	if( player_enabled )
+		sc->addRegisterCallback(register_CocosPlayer);
 #endif
 	sc->start();
 
@@ -103,15 +106,18 @@ void AppDelegate::startJavaScript( const char *js_script )
 #endif //JSB_ENABLE_DEBUGGER
 
 #ifdef CC_PLAYER
-	setDeviceResolution(res.c_str());
-	createPlayerServer(0);
+	if( player_enabled ) {
+		setDeviceResolution(res.c_str());
+		createPlayerServer(0);
 
-	if(firstTime) {
-		runMainScene();
-		firstTime = false;
-	} else {
-		handle_ccb_run();
-	}
+		if(firstTime) {
+			runMainScene();
+			firstTime = false;
+		} else {
+			handle_ccb_run();
+		}
+	} else
+		sc->runScript(js_script);
 #else
 	sc->runScript(js_script);
 #endif
