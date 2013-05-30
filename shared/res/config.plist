@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>data</key>
+	<dict>
+		<key>game.version</key>
+		<string>1.0</string>
+		<key>game.name</key>
+		<string>My Game</string>
+		<key>game.search_path.ios</key>
+		<array>
+			<string>res/Published-iOS</string>
+		</array>
+		<key>game.search_path.android</key>
+		<array>
+			<string>res/Published-Android</string>
+		</array>
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>format</key>
+		<integer>1</integer>
+	</dict>
+</dict>
+</plist>
