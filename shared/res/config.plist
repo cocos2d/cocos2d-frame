@@ -4,20 +4,22 @@
 <dict>
 	<key>data</key>
 	<dict>
+		<key>cocos2d.x.fps</key>
+		<integer>30</integer>
+		<key>cocos2d.x.display_fps</key>
+		<true/>
+		<key>cocos2d.jsb.boot_file</key>
+		<string>boot_jsb.js</string>
+		<key>cocos2d.jsb.search_path</key>
+		<string>res/js/</string>
+		<key>cocos2d.html5.boot_file</key>
+		<string>boot_html5.js</string>
 		<key>cocos2d.player.enabled</key>
 		<false/>
 		<key>game.version</key>
 		<string>1.0</string>
 		<key>game.name</key>
 		<string>My Game</string>
-		<key>game.search_path.ios</key>
-		<array>
-			<string>res/Published-iOS</string>
-		</array>
-		<key>game.search_path.android</key>
-		<array>
-			<string>res/Published-Android</string>
-		</array>
 	</dict>
 	<key>metadata</key>
 	<dict>

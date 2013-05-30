@@ -80,7 +80,7 @@ void handle_connected() {
 
 static void setViewValues(CCEGLView *pView, CCSize frameSize, CCSize designSize) {
     CCFileUtils::sharedFileUtils()->purgeCachedEntries();
-    ((AppDelegate *)CCApplication::sharedApplication())->initGameView();
+    ((AppDelegate *)CCApplication::sharedApplication())->init();
 }
 
 void handle_set_orient(bool isPortrait) {

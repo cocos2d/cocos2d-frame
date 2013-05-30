@@ -64,7 +64,7 @@ extern "C" {
 // AppDelegate
 //
 
-AppDelegate::AppDelegate(): isRetina(false), isIPhone(false)
+AppDelegate::AppDelegate(): isRetina(false), isIPhone(false), _resolution("")
 {
 }
 
@@ -78,9 +78,45 @@ void AppDelegate::setIsPortrait(bool isPortrait)
     isPortraitApp = isPortrait;
 }
 
-void AppDelegate::startJavaScript( const char *js_script )
+void AppDelegate::initPlayer()
 {
-	std::string res = initGameView();
+#if CC_PLAYER
+	// CocosPlayer Resources
+	std::vector<std::string> searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
+	searchPaths.insert(searchPaths.begin(), "PlayerResources");
+	CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
+
+	setDeviceResolution(_resolution.c_str());
+	createPlayerServer(0);
+
+	if(firstTime) {
+		runMainScene();
+		firstTime = false;
+	} else {
+		handle_ccb_run();
+	}
+#endif // CC_PLAYER
+}
+
+void AppDelegate::initJavaScript()
+{
+	CCConfiguration *conf = CCConfiguration::sharedConfiguration();
+
+	// set search paths for JS
+	std::vector<std::string> searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
+
+	// for built-in JS files
+	searchPaths.insert(searchPaths.begin(), "js");
+
+	// User defined JS files
+	searchPaths.insert(searchPaths.begin(), conf->getCString("cocos2d.jsb.search_path") );
+
+	CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
+
+	// get the name of the boot file
+	const char *boot_jsb = conf->getCString("cocos2d.jsb.boot_file");
+
+	// Register callbacks
 	ScriptingCore* sc = ScriptingCore::getInstance();
 	sc->addRegisterCallback(register_all_cocos2dx);
 	sc->addRegisterCallback(register_all_cocos2dx_extension);
@@ -90,12 +126,14 @@ void AppDelegate::startJavaScript( const char *js_script )
 	sc->addRegisterCallback(jsb_register_system);
 	sc->addRegisterCallback(jsb_register_chipmunk);
 	sc->addRegisterCallback(JSB_register_opengl);
+
 #ifdef CC_PLAYER
 	// CocosPlayer support could be added at compile time, but it can be disabled at runtime
 	bool player_enabled = CCConfiguration::sharedConfiguration()->getBool("cocos2d.player.enabled");
 	if( player_enabled )
 		sc->addRegisterCallback(register_CocosPlayer);
 #endif
+
 	sc->start();
 
 	CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
@@ -105,52 +143,52 @@ void AppDelegate::startJavaScript( const char *js_script )
 	sc->enableDebugger();
 #endif //JSB_ENABLE_DEBUGGER
 
-#ifdef CC_PLAYER
+#if CC_PLAYER
 	if( player_enabled ) {
-		setDeviceResolution(res.c_str());
-		createPlayerServer(0);
-
-		if(firstTime) {
-			runMainScene();
-			firstTime = false;
-		} else {
-			handle_ccb_run();
-		}
+		initPlayer();
 	} else
-		sc->runScript(js_script);
-#else
-	sc->runScript(js_script);
-#endif
+#endif // CC_PLAYER
+		sc->runScript(boot_jsb);
 }
 
-std::string AppDelegate::initGameView()
+void AppDelegate::initDirector()
 {
-	std::string res;
 	// initialize director
 	CCDirector *pDirector = CCDirector::sharedDirector();
 	pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
 	pDirector->setProjection(kCCDirectorProjection2D);
-	
-	
+
+	// turn on display FPS
+	bool display_fps = CCConfiguration::sharedConfiguration()->getNumber("cocos2d.x.display_fps");
+	pDirector->setDisplayStats(display_fps);
+
+	// set FPS. the default value is 1.0/60 if you don't call this
+	int fps = CCConfiguration::sharedConfiguration()->getNumber("cocos2d.x.fps");
+	pDirector->setAnimationInterval(1.0 / fps);
+}
+
+void AppDelegate::initSearchPath()
+{
 	CCSize screenSize = CCEGLView::sharedOpenGLView()->getFrameSize();
 	if(!isPortraitApp) {
 		screenSize = CCSizeMake(screenSize.height, screenSize.width);
 	}
-	
+
 	std::vector<std::string> resDirOrders;
 	TargetPlatform platform = CCApplication::sharedApplication()->getTargetPlatform();
-	
-	
+
+
 	if (platform == kTargetIphone || platform == kTargetIpad)
 	{
+		// CocosBuilderReader search path
 		std::vector<std::string> searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
 		searchPaths.insert(searchPaths.begin(), "Published files iOS");
 		searchPaths.insert(searchPaths.begin(), getCCBDirectoryPath());
-		
 		CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
+
 		if (screenSize.height > 1136)
 		{
-			res = "iPad";
+			_resolution = "iPad";
 			setResolutionSizes(true, true, isPortraitApp);
 			resDirOrders.push_back("resources-ipadhd");
 			resDirOrders.push_back("resources-ipad");
@@ -159,7 +197,7 @@ std::string AppDelegate::initGameView()
 			isRetina = true;
 			cocos2d::extension::CCBReader::setResolutionScale(2);
 		} else if(screenSize.height > 1024) {
-			res = "iPhone";
+			_resolution = "iPhone";
 			setResolutionSizes(false, true, isPortraitApp);
 			resDirOrders.push_back("resources-iphonehd");
 			resDirOrders.push_back("resources-iphone");
@@ -168,18 +206,18 @@ std::string AppDelegate::initGameView()
 		}
 		else if (screenSize.height > 960)
 		{
-			res = "iPad";
+			_resolution = "iPad";
 			setResolutionSizes(true, false, isPortraitApp);
 			resDirOrders.push_back("resources-ipad");
 			resDirOrders.push_back("resources-iphonehd");
 			isIPhone = false;
 			isRetina = false;
 			cocos2d::extension::CCBReader::setResolutionScale(2);
-			
+
 		}
 		else if (screenSize.height > 480)
 		{
-			res = "iPhone";
+			_resolution = "iPhone";
 			setResolutionSizes(false, true, isPortraitApp);
 			resDirOrders.push_back("resources-iphonehd");
 			resDirOrders.push_back("resources-iphone");
@@ -188,29 +226,29 @@ std::string AppDelegate::initGameView()
 		}
 		else
 		{
-			res = "iPhone";
+			_resolution = "iPhone";
 			setResolutionSizes(false, false, isPortraitApp);
 			resDirOrders.push_back("resources-iphone");
 			isIPhone = true;
 			isRetina = false;
 		}
-		
+
 	}
 	else if (platform == kTargetAndroid || platform == kTargetWindows)
 	{
 		int dpi = -1;
 		dpi = CCDevice::getDPI();
-		
+
 		if(dpi > 300) { // retina
 			if (screenSize.height > 1920) {
-				res = "xlarge";
+				_resolution = "xlarge";
 				setResolutionSizes(true, true, isPortraitApp);
 				resDirOrders.push_back("resources-xlarge");
 				resDirOrders.push_back("resources-large");
 				resDirOrders.push_back("resources-medium");
 				resDirOrders.push_back("resources-small");
 			} else {
-				res = "large";
+				_resolution = "large";
 				setResolutionSizes(false, true, isPortraitApp);
 				resDirOrders.push_back("resources-large");
 				resDirOrders.push_back("resources-medium");
@@ -219,7 +257,7 @@ std::string AppDelegate::initGameView()
 		} else { // non retina
 			if (screenSize.height > 960)
 			{
-				res = "large";
+				_resolution = "large";
 				setResolutionSizes(true, false, isPortraitApp);
 				resDirOrders.push_back("resources-large");
 				resDirOrders.push_back("resources-medium");
@@ -228,43 +266,40 @@ std::string AppDelegate::initGameView()
 			}
 			else if (screenSize.height > 768)
 			{
-				res = "medium";
+				_resolution = "medium";
 				setResolutionSizes(true, false, isPortraitApp);
 				resDirOrders.push_back("resources-medium");
 				resDirOrders.push_back("resources-small");
 			}
 			else if (screenSize.height > 480)
 			{
-				res = "small";
+				_resolution = "small";
 				setResolutionSizes(false, false, isPortraitApp);
 				resDirOrders.push_back("resources-small");
 			}
 			else
 			{
 				setResolutionSizes(false, false, isPortraitApp);
-				res = "xsmall";
+				_resolution = "xsmall";
 				resDirOrders.push_back("resources-xsmall");
 			}
-			
+
 		}
 	}
-	
+
 	CCFileUtils *pFileUtils = CCFileUtils::sharedFileUtils();
 	pFileUtils->setSearchResolutionsOrder(resDirOrders);
-	
+
 	std::vector<std::string> searchPaths = pFileUtils->getSearchPaths();
 	searchPaths.insert(searchPaths.begin(), pFileUtils->getWritablePath());
-	searchPaths.insert(searchPaths.begin(), "PlayerResources");
-	searchPaths.insert(searchPaths.begin(), "js");
 	pFileUtils->setSearchPaths(searchPaths);
-	
-	// turn on display FPS
-	pDirector->setDisplayStats(true);
-	
-	// set FPS. the default value is 1.0/60 if you don't call this
-	pDirector->setAnimationInterval(1.0 / 60);
 
-	return res;
+}
+
+void AppDelegate::init()
+{
+	this->initDirector();
+	this->initSearchPath();
 }
 
 bool AppDelegate::applicationDidFinishLaunching()
@@ -277,14 +312,22 @@ bool AppDelegate::applicationDidFinishLaunching()
 
 	//
 	// 2:
-	// If your game is going to use JS, you need to call this method
-	// otherwise you can commnet out this method
+	// Initialize the OpenGL View
+	// ( valid for JS and C++ games )
 	//
-	this->startJavaScript("main.js");
+	this->init();
 
 	//
 	// 3:
-	// For C++ only games, add your code here
+	// Initialize JavaScript
+	// ( valid only for JS games )
+	//
+	this->initJavaScript();
+
+	//
+	// 4:
+	// Add your native code here
+	// ( valid only for C++ or C++ with JS games )
 	//
 
 	// --> ADD Your C++ code here <--
