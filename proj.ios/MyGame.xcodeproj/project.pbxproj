@@ -140,6 +140,7 @@
 		265C9014172F4B71001841CE /* Slot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 265C8FFD172F4B71001841CE /* Slot.cpp */; };
 		265C9015172F4B71001841CE /* SlotData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 265C8FFF172F4B71001841CE /* SlotData.cpp */; };
 		265C9016172F4B71001841CE /* spine-cocos2dx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 265C9001172F4B71001841CE /* spine-cocos2dx.cpp */; };
+		8F1E7EBE175702C100BBC429 /* published in Resources */ = {isa = PBXBuildFile; fileRef = 8F1E7EBD175702C100BBC429 /* published */; };
 		A06F2D14174EDF320066C6B7 /* PlayerResources in Resources */ = {isa = PBXBuildFile; fileRef = A06F2D13174EDF320066C6B7 /* PlayerResources */; };
 		A06F2D18174EE0230066C6B7 /* res in Resources */ = {isa = PBXBuildFile; fileRef = A06F2D17174EE0230066C6B7 /* res */; };
 		A09773C01746B70E001BA00C /* Cocos2dPlayerCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A097738F1746B70E001BA00C /* Cocos2dPlayerCommon.cpp */; };
@@ -468,6 +469,7 @@
 		265C9001172F4B71001841CE /* spine-cocos2dx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "spine-cocos2dx.cpp"; sourceTree = "<group>"; };
 		265C9002172F4B71001841CE /* spine-cocos2dx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "spine-cocos2dx.h"; sourceTree = "<group>"; };
 		265C9003172F4B71001841CE /* spine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spine.h; sourceTree = "<group>"; };
+		8F1E7EBD175702C100BBC429 /* published */ = {isa = PBXFileReference; lastKnownFileType = folder; name = published; path = ../published; sourceTree = "<group>"; };
 		A06F2D13174EDF320066C6B7 /* PlayerResources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PlayerResources; path = ../libs/CocosPlayer/PlayerResources; sourceTree = "<group>"; };
 		A06F2D17174EE0230066C6B7 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = ../shared/res; sourceTree = "<group>"; };
 		A097738F1746B70E001BA00C /* Cocos2dPlayerCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cocos2dPlayerCommon.cpp; sourceTree = "<group>"; };
@@ -567,6 +569,7 @@
 		15628F5B15F0F5C2000CF24B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8F1E7EBD175702C100BBC429 /* published */,
 				A06F2D17174EE0230066C6B7 /* res */,
 				A06F2D13174EDF320066C6B7 /* PlayerResources */,
 				E8233BCE174C3BB300B8ED2E /* js */,
@@ -1289,6 +1292,7 @@
 				E8233BCF174C3BB300B8ED2E /* js in Resources */,
 				A06F2D14174EDF320066C6B7 /* PlayerResources in Resources */,
 				A06F2D18174EE0230066C6B7 /* res in Resources */,
+				8F1E7EBE175702C100BBC429 /* published in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
