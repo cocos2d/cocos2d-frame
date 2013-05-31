@@ -158,12 +158,12 @@ void AppDelegate::initDirector()
 	pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
 	pDirector->setProjection(kCCDirectorProjection2D);
 
-	// turn on display FPS
-	bool display_fps = CCConfiguration::sharedConfiguration()->getNumber("cocos2d.x.display_fps");
+	// turn on display FPS ? If not found, set it as false
+	bool display_fps = CCConfiguration::sharedConfiguration()->getBool("cocos2d.x.display_fps", false);
 	pDirector->setDisplayStats(display_fps);
 
-	// set FPS. the default value is 1.0/60 if you don't call this
-	int fps = CCConfiguration::sharedConfiguration()->getNumber("cocos2d.x.fps");
+	// set FPS. If not found, use 60
+	int fps = CCConfiguration::sharedConfiguration()->getNumber("cocos2d.x.fps", 60);
 	pDirector->setAnimationInterval(1.0 / fps);
 }
 
@@ -308,7 +308,8 @@ bool AppDelegate::applicationDidFinishLaunching()
 	// 1:
 	// Load config file
 	//
-	CCConfiguration::sharedConfiguration()->loadConfigFile("res/config.plist");
+	CCConfiguration *conf = CCConfiguration::sharedConfiguration();
+	conf->loadConfigFile("res/config.plist");
 
 	//
 	// 2:
