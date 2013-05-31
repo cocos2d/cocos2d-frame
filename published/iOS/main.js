@@ -2,6 +2,7 @@
 
 require("jsb.js");
 
+require("js/GameScene.js");
 require("js/MainScene.js");
 
 

@@ -128,9 +128,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>19</integer>
 							<integer>0</integer>
-							<integer>255</integer>
+							<integer>0</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -140,9 +140,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
+							<integer>0</integer>
+							<integer>150</integer>
 							<integer>255</integer>
-							<integer>33</integer>
-							<integer>249</integer>
 						</array>
 					</dict>
 					<dict>
@@ -232,7 +232,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>48</real>
+							<real>36</real>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -270,7 +270,7 @@
 						<key>type</key>
 						<string>Text</string>
 						<key>value</key>
-						<string>Hello CocosBuilder</string>
+						<string>Hello World (JavaScript)</string>
 					</dict>
 				</array>
 			</dict>
@@ -294,18 +294,6 @@
 						<integer>0</integer>
 						<key>properties</key>
 						<array>
-							<dict>
-								<key>name</key>
-								<string>position</string>
-								<key>type</key>
-								<string>Position</string>
-								<key>value</key>
-								<array>
-									<real>0.0</real>
-									<real>0.0</real>
-									<integer>4</integer>
-								</array>
-							</dict>
 							<dict>
 								<key>name</key>
 								<string>anchorPoint</string>
@@ -387,12 +375,10 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>images/clickme-down.png</string>
+									<string></string>
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -400,7 +386,7 @@
 				<key>displayName</key>
 				<string>CCMenu</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>menu</string>
 				<key>memberVarAssignmentType</key>
 				<integer>0</integer>
 				<key>properties</key>
@@ -490,6 +476,8 @@
 						<false/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -598,29 +586,15 @@
 			<key>centeredOrigin</key>
 			<false/>
 			<key>ext</key>
-			<string>iphone</string>
+			<string> </string>
 			<key>height</key>
-			<integer>320</integer>
+			<integer>480</integer>
 			<key>name</key>
-			<string>iPhone Landscape</string>
+			<string>iPhone Portrait</string>
 			<key>scale</key>
 			<real>1</real>
 			<key>width</key>
-			<integer>480</integer>
-		</dict>
-		<dict>
-			<key>centeredOrigin</key>
-			<false/>
-			<key>ext</key>
-			<string>ipad iphonehd</string>
-			<key>height</key>
-			<integer>768</integer>
-			<key>name</key>
-			<string>iPad Landscape</string>
-			<key>scale</key>
-			<real>2</real>
-			<key>width</key>
-			<integer>1024</integer>
+			<integer>320</integer>
 		</dict>
 	</array>
 	<key>sequences</key>
@@ -628,13 +602,6 @@
 		<dict>
 			<key>autoPlay</key>
 			<true/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
@@ -651,13 +618,6 @@
 			<real>128</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
 		</dict>
 	</array>
 	<key>stageBorder</key>

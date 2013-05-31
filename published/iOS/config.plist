@@ -11,7 +11,7 @@
 		<key>cocos2d.jsb.boot_file</key>
 		<string>main.js</string>
 		<key>cocos2d.jsb.search_path</key>
-		<string>res/js/</string>
+		<string></string>
 		<key>cocos2d.html5.boot_file</key>
 		<string>boot_html5.js</string>
 		<key>cocos2d.player.enabled</key>
