@@ -9,7 +9,7 @@
 		<key>cocos2d.x.display_fps</key>
 		<true/>
 		<key>cocos2d.jsb.boot_file</key>
-		<string>boot_jsb.js</string>
+		<string>main.js</string>
 		<key>cocos2d.jsb.search_path</key>
 		<string>res/js/</string>
 		<key>cocos2d.html5.boot_file</key>

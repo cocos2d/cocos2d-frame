@@ -308,7 +308,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	// 1:
 	// Load config file
 	//
-	CCConfiguration::sharedConfiguration()->loadConfigFile("res/config.plist");
+	CCConfiguration::sharedConfiguration()->loadConfigFile("config.plist");
 
 	//
 	// 2:
