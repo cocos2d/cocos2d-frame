@@ -35,8 +35,13 @@
 
 class  AppDelegate : private cocos2d::CCApplication
 {
-	/** initializes JavaScript */
-	void startJavaScript( const char *js_script );
+	// string with the name of the current resolution
+	std::string _resolution;
+
+	void initDirector();
+	void initSearchPath();
+	void initJavaScript();
+	void initPlayer();
 
 public:
     bool isRetina, isIPhone;
@@ -62,9 +67,12 @@ public:
      @param  the pointer of the application
      */
     virtual void applicationWillEnterForeground();
-    std::string initGameView();
+
+	// initializes the game view
+	void init();
+
+	// set the game in portrait mode
     static void setIsPortrait(bool isPortrait);
-   
 };
 
 
