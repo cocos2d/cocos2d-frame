@@ -2,8 +2,8 @@
 
 require("jsb.js");
 
-require("js/GameScene.js");
-require("js/MainScene.js");
+require("javascript/GameScene.js");
+require("javascript/MainScene.js");
 
 
 function main()

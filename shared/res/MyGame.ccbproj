@@ -24,6 +24,8 @@
 	<true/>
 	<key>javascriptMainCCB</key>
 	<string>interface/MainScene</string>
+	<key>needRepublish</key>
+	<false/>
 	<key>onlyPublishCCBs</key>
 	<false/>
 	<key>publishDirectory</key>
