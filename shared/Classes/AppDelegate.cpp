@@ -309,7 +309,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	// Load config file
 	//
 	CCConfiguration *conf = CCConfiguration::sharedConfiguration();
-	conf->loadConfigFile("res/config.plist");
+	conf->loadConfigFile("config.plist");
 
 	//
 	// 2:
@@ -351,4 +351,4 @@ void AppDelegate::applicationWillEnterForeground()
 	SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
 	SimpleAudioEngine::sharedEngine()->resumeAllEffects();
 }
-    
+

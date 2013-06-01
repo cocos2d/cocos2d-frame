@@ -64,7 +64,7 @@ COCOS2DX_ROOT="$DIR/../libs/cocos2d-x/"
 APP_ROOT="$DIR/.."
 APP_ANDROID_ROOT="$DIR"
 BINDINGS_JS_ROOT="$COCOS2DX_ROOT/scripting/javascript/bindings/js"
-RESROUCE_ROOT="$APP_ROOT/Resources"
+RESROUCE_ROOT="$APP_ROOT/published/Android"
 
 echo
 echo "Paths"
