@@ -1057,6 +1057,26 @@
 			path = spine;
 			sourceTree = "<group>";
 		};
+		265DD126174BF90C00BE587C /* js */ = {
+			isa = PBXGroup;
+			children = (
+				265DD127174BF90C00BE587C /* jsb.js */,
+				265DD128174BF90C00BE587C /* jsb_chipmunk.js */,
+				265DD129174BF90C00BE587C /* jsb_chipmunk_constants.js */,
+				265DD12A174BF90C00BE587C /* jsb_cocos2d.js */,
+				265DD12B174BF90C00BE587C /* jsb_cocos2d_constants.js */,
+				265DD12C174BF90C00BE587C /* jsb_cocos2d_extension.js */,
+				265DD12D174BF90C00BE587C /* jsb_cocosbuilder.js */,
+				265DD12E174BF90C00BE587C /* jsb_debugger.js */,
+				265DD12F174BF90C00BE587C /* jsb_opengl.js */,
+				265DD130174BF90C00BE587C /* jsb_opengl_constants.js */,
+				265DD131174BF90C00BE587C /* jsb_sys.js */,
+				265DD132174BF90C00BE587C /* main.debug.js */,
+			);
+			name = js;
+			path = "../libs/cocos2d-x/scripting/javascript/bindings/js";
+			sourceTree = "<group>";
+		};
 		A073DBF91734DC9D00889EAE /* libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1311,6 +1331,18 @@
 				2650A2A7170B842C0007F98D /* libJSBinding.vcxproj.user in Resources */,
 				A09773C41746B70E001BA00C /* LICENSE in Resources */,
 				A09775BA1746D069001BA00C /* Default-568h@2x.png in Resources */,
+				265DD133174BF90C00BE587C /* jsb.js in Resources */,
+				265DD134174BF90C00BE587C /* jsb_chipmunk.js in Resources */,
+				265DD135174BF90C00BE587C /* jsb_chipmunk_constants.js in Resources */,
+				265DD136174BF90C00BE587C /* jsb_cocos2d.js in Resources */,
+				265DD137174BF90C00BE587C /* jsb_cocos2d_constants.js in Resources */,
+				265DD138174BF90C00BE587C /* jsb_cocos2d_extension.js in Resources */,
+				265DD139174BF90C00BE587C /* jsb_cocosbuilder.js in Resources */,
+				265DD13A174BF90C00BE587C /* jsb_debugger.js in Resources */,
+				265DD13B174BF90C00BE587C /* jsb_opengl.js in Resources */,
+				265DD13C174BF90C00BE587C /* jsb_opengl_constants.js in Resources */,
+				265DD13D174BF90C00BE587C /* jsb_sys.js in Resources */,
+				265DD13E174BF90C00BE587C /* main.debug.js in Resources */,
 				A09775BB1746D069001BA00C /* Default.png in Resources */,
 				A09775BC1746D069001BA00C /* Default@2x.png in Resources */,
 				A09775BD1746D069001BA00C /* Icon-57.png in Resources */,

@@ -54,6 +54,16 @@
 
 
 
+/// Designated initializer
+/**
+ Initializes the Stub with a protocol identifier string and requested port. When started, this server stub will automatically connect to all client stubs (ThoMoClientStub) on the local network that use the same protocol identifier. The server stub will listen on the port set for listening.
+ 
+ \param[in] theProtocolIdentifier A user-definable string of maximum 14 characters length. Determines which client stubs this server stub connects to.
+ 
+ \throws ThoMoInvalidArgumentException if theProtocolIdentifier exceeds 14 characters in length.
+ */
+-(id)initWithProtocolIdentifier:(NSString *)theProtocolIdentifier andPort: (uint16_t) port;
+
 /// Starts the server stub
 /**
  Starts the server stub on a background thread. The stub will auto-connect to each client with the same protocol identifier. May be called only once during the lifetime of the stub.

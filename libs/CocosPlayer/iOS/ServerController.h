@@ -53,6 +53,7 @@ extern NSString *kCCBNetworkStatusStringConnected;
 extern NSString *kCCBNetworkStatusStringShutDown;
 
 extern NSString *kCCBPlayerStatusStringNotConnected;
+extern NSString *kCCBPlayerStatusStringNotConnectedWithIP;
 extern NSString *kCCBPlayerStatusStringIdle;
 extern NSString *kCCBPlayerStatusStringUnzip;
 extern NSString *kCCBPlayerStatusStringStop;
