@@ -4,6 +4,8 @@
 <dict>
 	<key>data</key>
 	<dict>
+		<key>cocos2d.orientation.isPortrait</key>
+		<true/>
 		<key>cocos2d.x.fps</key>
 		<integer>30</integer>
 		<key>cocos2d.x.display_fps</key>
@@ -15,7 +17,7 @@
 		<key>cocos2d.html5.boot_file</key>
 		<string>boot_html5.js</string>
 		<key>cocos2d.player.enabled</key>
-		<false/>
+		<true/>
 		<key>game.version</key>
 		<string>1.0</string>
 		<key>game.name</key>

@@ -1,7 +1,6 @@
 #include "AppDelegate.h"
 
 static bool firstTime = true;
-static bool isPortraitApp = true;
 
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -10,32 +9,44 @@ extern "C" {
     const char * getCCBDirectoryPath();
 
 
-    static void setResolutionSizes(bool isTablet, bool isRetina, bool isPortrait) {
+    static void setResolutionSizes(bool isTablet, bool isRetina) {
+        CCConfiguration *conf = CCConfiguration::sharedConfiguration();
+        
+        bool isPortrait = conf->getBool("cocos2d.orientation.isPortrait", true);
+        double tabletW = conf->getNumber("cocos2d.designSize.tabletWidth", 0);
+        double tabletH = conf->getNumber("cocos2d.designSize.tabletHeight", 0);
+        double phoneW = conf->getNumber("cocos2d.designSize.phoneWidth", 0);
+        double phoneH = conf->getNumber("cocos2d.designSize.phoneHeight", 0);
+        
+        if(tabletH == 0 || tabletW == 0) {
+            if(isPortrait) {
+                tabletH = 1024; tabletW = 768;
+            } else {
+                tabletH = 768; tabletW = 1024;
+            }
+        }
+        
+        if(phoneH == 0 || phoneW == 0) {
+            if(isPortrait) {
+                phoneH = 480; phoneW = 320;
+            } else {
+                phoneH = 320; phoneW = 480;
+            }
+        }
+        
         CCSize designSize, resourceSize;
-        if(isTablet && isPortrait) {
-            designSize = CCSizeMake(768, 1024);
-            if(isRetina) resourceSize = CCSizeMake(1536, 2048);
-            else resourceSize = CCSizeMake(768, 1024);
-        } else if(isTablet) {
-            designSize = CCSizeMake(1024, 768);
-            if(isRetina) resourceSize = CCSizeMake(2048, 1536);
-            else resourceSize = CCSizeMake(1024, 768);
-        } else if(isPortrait) {
-            designSize = CCSizeMake(320, 480);
-            if(isRetina) resourceSize = CCSizeMake(640, 960);
-            else resourceSize = CCSizeMake(320, 480);
-        } else {
-            designSize = CCSizeMake(480, 320);
-            if(isRetina) resourceSize = CCSizeMake(960, 640);
-            else resourceSize = CCSizeMake(480, 320);
-        }
 
-        CCDirector::sharedDirector()->setContentScaleFactor(resourceSize.width/designSize.width);
-        if(isPortrait) {
-            CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionFixedWidth);
-        } else {
-            CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionFixedHeight);
-        }
+        // Is tablet or not
+        designSize = CCSizeMake((isTablet) ? tabletW : phoneW, (isTablet) ? tabletH : phoneH);
+        
+        // Is retina -> scale by 2
+        CCDirector::sharedDirector()->setContentScaleFactor((isRetina) ? 2.0 : 1.0);
+        
+        // Is portrait -> kResolutionFixedWidth, !portait -> kResolutionFixedHeight
+        CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width,
+                                                               designSize.height,
+                                                               isPortrait ? kResolutionFixedWidth : kResolutionFixedHeight);
+        
     }
 
 	void handle_signal(int signal)
@@ -75,7 +86,9 @@ AppDelegate::~AppDelegate()
 
 void AppDelegate::setIsPortrait(bool isPortrait)
 {
-    isPortraitApp = isPortrait;
+    CCBool *orient = CCBool::create(isPortrait);
+    CCConfiguration *conf = CCConfiguration::sharedConfiguration();
+    conf->setObject("cocos2d.orientation.isPortrait", orient);
 }
 
 void AppDelegate::initPlayer()
@@ -109,7 +122,7 @@ void AppDelegate::initJavaScript()
 	searchPaths.insert(searchPaths.begin(), "js");
 
 	// User defined JS files
-	searchPaths.insert(searchPaths.begin(), conf->getCString("cocos2d.jsb.search_path") );
+	searchPaths.insert(searchPaths.begin(), conf->getCString("cocos2d.jsb.search_path", "") );
 
 	CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
 
@@ -148,7 +161,7 @@ void AppDelegate::initJavaScript()
 		initPlayer();
 	} else
 #endif // CC_PLAYER
-		sc->runScript(boot_jsb);
+    sc->runScript(boot_jsb);
 }
 
 void AppDelegate::initDirector()
@@ -170,7 +183,9 @@ void AppDelegate::initDirector()
 void AppDelegate::initSearchPath()
 {
 	CCSize screenSize = CCEGLView::sharedOpenGLView()->getFrameSize();
-	if(!isPortraitApp) {
+    CCConfiguration *conf = CCConfiguration::sharedConfiguration();
+
+	if(!conf->getBool("cocos2d.orientation.isPortrait", true)) {
 		screenSize = CCSizeMake(screenSize.height, screenSize.width);
 	}
 
@@ -189,16 +204,21 @@ void AppDelegate::initSearchPath()
 		if (screenSize.height > 1136)
 		{
 			_resolution = "iPad";
-			setResolutionSizes(true, true, isPortraitApp);
+			setResolutionSizes(true, true);
 			resDirOrders.push_back("resources-ipadhd");
 			resDirOrders.push_back("resources-ipad");
 			resDirOrders.push_back("resources-iphonehd");
 			isIPhone = false;
 			isRetina = true;
+            
+            // CCBReader::setResolutionScale(2) * sharedDirector()->setContentScaleFactor(1) = 2
+            // == (iPad HD)
+            // CocosBuilder scaling = 1,2,2,4 (iPhone, iPhoneRetina, iPad, iPadHD)
 			cocos2d::extension::CCBReader::setResolutionScale(2);
+            
 		} else if(screenSize.height > 1024) {
 			_resolution = "iPhone";
-			setResolutionSizes(false, true, isPortraitApp);
+			setResolutionSizes(false, true);
 			resDirOrders.push_back("resources-iphonehd");
 			resDirOrders.push_back("resources-iphone");
 			isIPhone = true;
@@ -207,18 +227,22 @@ void AppDelegate::initSearchPath()
 		else if (screenSize.height > 960)
 		{
 			_resolution = "iPad";
-			setResolutionSizes(true, false, isPortraitApp);
+			setResolutionSizes(true, false);
 			resDirOrders.push_back("resources-ipad");
 			resDirOrders.push_back("resources-iphonehd");
 			isIPhone = false;
 			isRetina = false;
+            
+            // CCBReader::setResolutionScale(2) * sharedDirector()->setContentScaleFactor(1) = 2
+            // == (iPad)
+            // CocosBuilder scaling = 1,2,2,4 (iPhone, iPhoneRetina, iPad, iPadHD)
 			cocos2d::extension::CCBReader::setResolutionScale(2);
 
 		}
 		else if (screenSize.height > 480)
 		{
 			_resolution = "iPhone";
-			setResolutionSizes(false, true, isPortraitApp);
+			setResolutionSizes(false, true);
 			resDirOrders.push_back("resources-iphonehd");
 			resDirOrders.push_back("resources-iphone");
 			isIPhone = true;
@@ -227,7 +251,7 @@ void AppDelegate::initSearchPath()
 		else
 		{
 			_resolution = "iPhone";
-			setResolutionSizes(false, false, isPortraitApp);
+			setResolutionSizes(false, false);
 			resDirOrders.push_back("resources-iphone");
 			isIPhone = true;
 			isRetina = false;
@@ -242,14 +266,14 @@ void AppDelegate::initSearchPath()
 		if(dpi > 300) { // retina
 			if (screenSize.height > 1920) {
 				_resolution = "xlarge";
-				setResolutionSizes(true, true, isPortraitApp);
+				setResolutionSizes(true, true);
 				resDirOrders.push_back("resources-xlarge");
 				resDirOrders.push_back("resources-large");
 				resDirOrders.push_back("resources-medium");
 				resDirOrders.push_back("resources-small");
 			} else {
 				_resolution = "large";
-				setResolutionSizes(false, true, isPortraitApp);
+				setResolutionSizes(false, true);
 				resDirOrders.push_back("resources-large");
 				resDirOrders.push_back("resources-medium");
 				resDirOrders.push_back("resources-small");
@@ -258,28 +282,31 @@ void AppDelegate::initSearchPath()
 			if (screenSize.height > 960)
 			{
 				_resolution = "large";
-				setResolutionSizes(true, false, isPortraitApp);
+				setResolutionSizes(true, false);
 				resDirOrders.push_back("resources-large");
 				resDirOrders.push_back("resources-medium");
 				resDirOrders.push_back("resources-small");
+                
+                // CCBReader::setResolutionScale(2) * sharedDirector()->setContentScaleFactor(2) = 4
+                // == (iPad retina)
 				cocos2d::extension::CCBReader::setResolutionScale(2);
 			}
 			else if (screenSize.height > 768)
 			{
 				_resolution = "medium";
-				setResolutionSizes(true, false, isPortraitApp);
+				setResolutionSizes(true, false);
 				resDirOrders.push_back("resources-medium");
 				resDirOrders.push_back("resources-small");
 			}
 			else if (screenSize.height > 480)
 			{
 				_resolution = "small";
-				setResolutionSizes(false, false, isPortraitApp);
+				setResolutionSizes(false, false);
 				resDirOrders.push_back("resources-small");
 			}
 			else
 			{
-				setResolutionSizes(false, false, isPortraitApp);
+				setResolutionSizes(false, false);
 				_resolution = "xsmall";
 				resDirOrders.push_back("resources-xsmall");
 			}

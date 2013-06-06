@@ -31,6 +31,10 @@
 #import "SSZipArchive.h"
 #import "RootViewController.h"
 
+#import <ifaddrs.h>
+#import <arpa/inet.h>
+
+
 // Predefined messages
 NSString *kCCBNetworkStatusStringWaiting = @"Waiting for connections";
 NSString *kCCBNetworkStatusStringTooMany = @"Too many connections";
@@ -43,7 +47,10 @@ NSString *kCCBPlayerStatusStringUnzip = @"Action: Unzip game";
 NSString *kCCBPlayerStatusStringStop = @"Action: Stop";
 NSString *kCCBPlayerStatusStringPlay = @"Action: Run";
 NSString *kCCBPlayerStatusStringScript = @"Action: Executing script";
+NSString *kCCBPlayerStatusStringNotConnectedWithIP = @"Server listening on IP: ";
 
+NSString *ip = [[NSString alloc] init];
+uint16_t thePort = 54671;
 
 @implementation ServerController
 
@@ -65,6 +72,42 @@ NSString *kCCBPlayerStatusStringScript = @"Action: Executing script";
     }
 }
 
+- (NSString *)getIPAddress
+{
+    struct ifaddrs *interfaces = NULL;
+    struct ifaddrs *temp_addr = NULL;
+    NSString *wifiAddress = nil;
+    NSString *cellAddress = nil;
+    
+    // retrieve the current interfaces - returns 0 on success
+    if(!getifaddrs(&interfaces)) {
+        // Loop through linked list of interfaces
+        temp_addr = interfaces;
+        while(temp_addr != NULL) {
+            sa_family_t sa_type = temp_addr->ifa_addr->sa_family;
+            if(sa_type == AF_INET || sa_type == AF_INET6) {
+                NSString *name = [NSString stringWithUTF8String:temp_addr->ifa_name];
+                NSString *addr = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)]; // pdp_ip0
+                NSLog(@"NAME: \"%@\" addr: %@", name, addr); // see for yourself
+                
+                if([name isEqualToString:@"en0"]) {
+                    // Interface is the wifi connection on the iPhone
+                    wifiAddress = addr;
+                } else
+                    if([name isEqualToString:@"pdp_ip0"]) {
+                        // Interface is the cell connection on the iPhone
+                        cellAddress = addr;
+                    }
+            }
+            temp_addr = temp_addr->ifa_next;
+        }
+        // Free memory
+        freeifaddrs(interfaces);
+    }
+    NSString *addr = wifiAddress ? wifiAddress : cellAddress;
+    return addr ? addr : @"0.0.0.0";
+}
+
 - (id) init
 {
     self = [super init];
@@ -72,7 +115,11 @@ NSString *kCCBPlayerStatusStringScript = @"Action: Executing script";
     
     connectedClients = [[NSMutableSet alloc] init];
     
-    server = [[ThoMoServerStub alloc] initWithProtocolIdentifier:[self protocolIdentifier]];
+    ip = [self getIPAddress];
+    server = [[ThoMoServerStub alloc] initWithProtocolIdentifier:[self protocolIdentifier] andPort: thePort];
+    
+    kCCBPlayerStatusStringNotConnectedWithIP = [[NSString stringWithFormat:@"%@ %@ and Port: %d", kCCBPlayerStatusStringNotConnectedWithIP, ip, thePort] retain];
+    
     [server setDelegate:self];
     
 	networkStatus = kCCBNetworkUninitialized;
@@ -274,9 +321,7 @@ NSString *kCCBPlayerStatusStringScript = @"Action: Executing script";
 {
     NSArray* files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:dir error:NULL];
     for (NSString* file in files)
-    {
-        NSLog(@"%@%@", prefix, file);
-        
+    {        
         BOOL isDir = NO;
         if ([[NSFileManager defaultManager] fileExistsAtPath:[dir stringByAppendingPathComponent:file] isDirectory:&isDir] && isDir)
         {
@@ -377,6 +422,7 @@ NSString *kCCBPlayerStatusStringScript = @"Action: Executing script";
 }
 
 #pragma mark Server callbacks
+
 
 - (void) server:(ThoMoServerStub *)theServer acceptedConnectionFromClient:(NSString *)aClientIdString
 {
@@ -539,9 +585,8 @@ NSString *kCCBPlayerStatusStringScript = @"Action: Executing script";
 
 		switch (playerStatus) {
 			case kCCBPlayerStatusExecuteScript:
-				if( playerWindowDisplayed) {
-                    handle_set_message((const char *)[kCCBPlayerStatusStringScript cStringUsingEncoding:NSASCIIStringEncoding]);
-                }
+				if( playerWindowDisplayed)
+                    handle_set_message((const char *)[kCCBPlayerStatusStringScript cStringUsingEncoding:NSASCIIStringEncoding]);                
 				break;
 			case kCCBPlayerStatusPlay:
 				if( playerWindowDisplayed)
@@ -561,8 +606,9 @@ NSString *kCCBPlayerStatusStringScript = @"Action: Executing script";
                     handle_set_message((const char *)[kCCBPlayerStatusStringIdle cStringUsingEncoding:NSASCIIStringEncoding]);
 				break;
 			case kCCBPlayerStatusNotConnected:
-				if( playerWindowDisplayed)
-                    handle_set_message((const char *)[kCCBPlayerStatusStringNotConnected cStringUsingEncoding:NSASCIIStringEncoding]);
+				if( playerWindowDisplayed) {
+                    handle_set_message((const char *)[kCCBPlayerStatusStringNotConnectedWithIP cStringUsingEncoding:NSASCIIStringEncoding]);
+                }
 				break;
 				
 			default:
@@ -660,10 +706,6 @@ NSString *kCCBPlayerStatusStringScript = @"Action: Executing script";
     [msg setObject:dirFiles forKey:@"filelist"];
     
     [self sendMessage:msg];
-    for (id key in msg) {
-        NSLog(@"key: %@, value: %@", key, [msg objectForKey:key]);
-        
-    }
 }
 
 - (void) sendRunning
@@ -680,7 +722,7 @@ NSString *kCCBPlayerStatusStringScript = @"Action: Executing script";
 {
     [server release];
     [connectedClients release];
-    
+    [kCCBPlayerStatusStringNotConnectedWithIP release];
     [super dealloc];
 }
 
