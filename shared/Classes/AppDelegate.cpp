@@ -152,10 +152,6 @@ void AppDelegate::initJavaScript()
 	CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
 	CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
 
-#if JSB_ENABLE_DEBUGGER
-	sc->enableDebugger();
-#endif //JSB_ENABLE_DEBUGGER
-
 #if CC_PLAYER
 	if( player_enabled ) {
 		initPlayer();

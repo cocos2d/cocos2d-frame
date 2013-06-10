@@ -64,7 +64,6 @@ void handle_ccb_run() {
     CCFileUtils::sharedFileUtils()->purgeCachedEntries();
     SimpleAudioEngine::sharedEngine()->end();
     CCFileUtils::sharedFileUtils()->loadFilenameLookupDictionaryFromFile("fileLookup.plist");
-    ScriptingCore::getInstance()->reset();
     ScriptingCore::getInstance()->runScript("main.js");
 }
 
