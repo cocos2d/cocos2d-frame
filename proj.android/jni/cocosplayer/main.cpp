@@ -51,16 +51,19 @@ void Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeInit(JNIEnv*  env, jobject thi
     //    handle_set_orient(w, h);
   }
 
-  void Java_org_cocos2dx_lib_Cocos2dxGLSurfaceView_nativeRunCCB(JNIEnv*  env, jobject thiz)
-  {
-    handle_ccb_run();
-  }
+    void Java_org_cocos2dx_lib_Cocos2dxGLSurfaceView_nativeRunCCB(JNIEnv*  env, jobject thiz)
+    {
+        handle_ccb_run();
+    }
 
-  void Java_org_cocos2dx_cocosplayer_CocosPlayerSocket_nativeRunCCB(JNIEnv*  env, jobject thiz)
-  {
-    LOGD("INSIDE JNI RUN CALL %d %d", gettid(), getpid());
-    handle_ccb_run();
-  }
+    // defined in Java_org_cocos2dx_cocosplayer_CocosPlayerSocket.cpp
+    extern void sendRunningAckMsg();
+    void Java_org_cocos2dx_cocosplayer_CocosPlayerSocket_nativeRunCCB(JNIEnv*  env, jobject thiz)
+    {
+        LOGD("INSIDE JNI RUN CALL %d %d", gettid(), getpid());
+        handle_ccb_run();
+        sendRunningAckMsg();
+    }
 
   void Java_org_cocos2dx_cocosplayer_CocosPlayerSocket_nativeStopCCB(JNIEnv*  env, jobject thiz)
   {
