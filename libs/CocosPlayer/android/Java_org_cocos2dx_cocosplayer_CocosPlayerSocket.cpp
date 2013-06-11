@@ -25,6 +25,14 @@ const int SCREEN_ORIENTATION_PORTRAIT = 1;
 const int SCREEN_ORIENTATION_LANDSCAPE = 0;
 
 extern "C" {
+    void sendRunningAckMsg() {
+        JniMethodInfo t;
+        if (JniHelper::getStaticMethodInfo(t, SOCKET_CLASS_NAME, "sendRunningAck", "()V")) {
+            t.env->CallStaticVoidMethod(t.classID, t.methodID);
+            t.env->DeleteLocalRef(t.classID);
+        }
+    }
+
    void updatePairing(const char *code) {
        int pairingCode = 0;
        if(strcmp(code, "Auto") == 0) {

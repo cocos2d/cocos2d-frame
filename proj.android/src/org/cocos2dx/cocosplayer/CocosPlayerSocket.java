@@ -367,7 +367,13 @@ public class CocosPlayerSocket {
 				out);
 	}
 
-        public static void disconnectClient() {
+	public static void sendRunningAck() {
+		Log.i("main", "sendRunningAck");
+		CCBStreamHandler.sendString(CCBStreamHandler.getRunningAckMsg(), client,
+                                    out);
+	}
+
+    public static void disconnectClient() {
 	    try {
 		Log.i(TAG, "DISCONNECTING CLIENT");
 		client.close();

@@ -162,6 +162,17 @@ public class CCBStreamHandler {
 		return null;
 	}
 
+	public static String getRunningAckMsg() {
+		try {
+			NSDictionary root = new NSDictionary();
+			root.put("cmd", "running");
+			String payload = root.toXMLPropertyList();
+			return payload;
+		} catch(Exception e) {
+		}
+		return null;
+	}
+
 	public static void setDeviceResolution(String res) {
 		Log.i(TAG, "Starting with resolution: "+res);
 		resolution = res;
