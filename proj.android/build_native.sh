@@ -65,6 +65,7 @@ APP_ROOT="$DIR/.."
 APP_ANDROID_ROOT="$DIR"
 BINDINGS_JS_ROOT="$COCOS2DX_ROOT/scripting/javascript/bindings/js"
 RESOURCE_ROOT="$APP_ROOT/published/Android"
+PLAYER_RESOURCE_ROOT="$APP_ROOT/libs/CocosPlayer/PlayerResources"
 
 echo
 echo "Paths"
@@ -90,7 +91,10 @@ cp -f "$BINDINGS_JS_ROOT"/*.js "$APP_ANDROID_ROOT"/assets
 # copy bindings/*.js into assets' root
 cp -rf "$RESOURCE_ROOT"/ "$APP_ANDROID_ROOT"/assets
 
-#cp -rf "$CCB_RESOURCE_ROOT" "$APP_ANDROID_ROOT"/assets
+mkdir -p "$APP_ANDROID_ROOT"/assets/PlayerResources
+cp "$PLAYER_RESOURCE_ROOT"/*.png "$APP_ANDROID_ROOT"/assets/PlayerResources
+cp "$PLAYER_RESOURCE_ROOT"/*.ccbi "$APP_ANDROID_ROOT"/assets/PlayerResources
+cp "$PLAYER_RESOURCE_ROOT"/*.plist "$APP_ANDROID_ROOT"/assets/PlayerResources
 
 echo "Using prebuilt externals"
 echo
