@@ -91,12 +91,20 @@ void AppDelegate::setIsPortrait(bool isPortrait)
     conf->setObject("cocos2d.orientation.isPortrait", orient);
 }
 
+static const char* getCCBWriteablePath() {
+    std::string writeablePath = CCFileUtils::sharedFileUtils()->getWritablePath();
+    writeablePath += "/ccb/";
+    return writeablePath.c_str();
+}
+
 void AppDelegate::initPlayer()
 {
 #if CC_PLAYER
 	// CocosPlayer Resources
 	std::vector<std::string> searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
 	searchPaths.insert(searchPaths.begin(), "PlayerResources");
+    searchPaths.insert(searchPaths.begin(), getCCBWriteablePath());
+    searchPaths.insert(searchPaths.begin(), CCFileUtils::sharedFileUtils()->getWritablePath());
 	CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
 
 	setDeviceResolution(_resolution.c_str());
@@ -152,7 +160,7 @@ void AppDelegate::initJavaScript()
 	CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
 	CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
 
-#if CC_PLAYER
+#ifdef CC_PLAYER
 	if( player_enabled ) {
 		initPlayer();
 	} else
