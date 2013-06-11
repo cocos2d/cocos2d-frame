@@ -64,7 +64,7 @@ COCOS2DX_ROOT="$DIR/../libs/cocos2d-x/"
 APP_ROOT="$DIR/.."
 APP_ANDROID_ROOT="$DIR"
 BINDINGS_JS_ROOT="$COCOS2DX_ROOT/scripting/javascript/bindings/js"
-RESROUCE_ROOT="$APP_ROOT/published/Android"
+RESOURCE_ROOT="$APP_ROOT/published/Android"
 
 echo
 echo "Paths"
@@ -88,7 +88,7 @@ mkdir "$APP_ANDROID_ROOT"/assets
 cp -f "$BINDINGS_JS_ROOT"/*.js "$APP_ANDROID_ROOT"/assets
 
 # copy bindings/*.js into assets' root
-cp -rf "$RESROUCE_ROOT"/ "$APP_ANDROID_ROOT"/assets
+cp -rf "$RESOURCE_ROOT"/ "$APP_ANDROID_ROOT"/assets
 
 #cp -rf "$CCB_RESOURCE_ROOT" "$APP_ANDROID_ROOT"/assets
 
